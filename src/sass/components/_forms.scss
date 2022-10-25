@@ -1,0 +1,29 @@
+.form_container{
+ margin-top: 40px;
+
+ .form-label{
+  display: block;
+  margin: 0;
+ }
+ .input-group{
+  flex-direction: column;
+   .input_group-container{
+    display: flex;
+    border: solid black 2px;
+    max-width: 50%;
+    margin: auto;
+  
+  }
+ }
+ .input-group-text{
+  background-color: $white;
+  border:none;
+ }
+ .form-control{
+  border:none;
+
+ }
+  .btn{
+    margin: 20px 0;
+  }
+}

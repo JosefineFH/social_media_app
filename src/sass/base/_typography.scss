@@ -1,0 +1,19 @@
+
+.register_link-container{
+  a{
+    color: $rust;
+    border-bottom: solid $rust 2px;
+    text-decoration: none;
+    font-weight: bold;
+  
+    &:hover{
+      text-decoration: none;
+      font-weight: bold;
+      color: $rust;
+      border-color: $white;
+    }
+  }
+  p{
+    margin: 20px 0;
+  }
+}

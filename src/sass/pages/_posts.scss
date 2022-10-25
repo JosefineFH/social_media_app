@@ -1,0 +1,11 @@
+.card-group{
+  .card{
+    width: 250px;
+    height: auto;
+    .image_container{
+      width: 150px;
+      height: 100px;
+      object-fit: cover;
+    }
+  }
+}

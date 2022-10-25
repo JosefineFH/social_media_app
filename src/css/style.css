@@ -1,0 +1,113 @@
+.register_link-container a {
+  color: #8C310F;
+  border-bottom: solid #8C310F 2px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register_link-container a:hover {
+  text-decoration: none;
+  font-weight: bold;
+  color: #8C310F;
+  border-color: #fff;
+}
+
+.register_link-container p {
+  margin: 20px 0;
+}
+
+.container-fluid {
+  margin-top: 50px;
+  max-width: 600px;
+}
+
+.error, .form-error {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #FFF6F6;
+  border: solid 1px #973937;
+  border-radius: 5px;
+  color: #973937;
+  font-weight: 500;
+}
+
+.message .success {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #FCFFF5;
+  border: solid 1px #973937;
+  border-radius: 5px;
+  color: #1E561F;
+  font-weight: 500;
+}
+
+.message_container p {
+  padding: 5px;
+  margin: 0;
+}
+
+.btn-primary {
+  background-color: #262626;
+  border-color: #262626;
+  border-width: 2px;
+  width: 200px;
+  height: 50px;
+  border-radius: 50px;
+  font-size: 20px;
+}
+
+.btn-primary:hover {
+  background-color: #fff;
+  color: #262626;
+  border-color: #262626;
+}
+
+.card-group .card {
+  width: 250px;
+  height: auto;
+}
+
+.card-group .card .image_container {
+  width: 150px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.form_container {
+  margin-top: 40px;
+}
+
+.form_container .form-label {
+  display: block;
+  margin: 0;
+}
+
+.form_container .input-group {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form_container .input-group .input_group-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: solid black 2px;
+  max-width: 50%;
+  margin: auto;
+}
+
+.form_container .input-group-text {
+  background-color: #fff;
+  border: none;
+}
+
+.form_container .form-control {
+  border: none;
+}
+
+.form_container .btn {
+  margin: 20px 0;
+}

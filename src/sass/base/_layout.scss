@@ -1,0 +1,31 @@
+.container-fluid{
+  margin-top: 50px;
+  max-width: 600px;
+}
+
+  .error, .form-error{
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #FFF6F6;
+    border: solid 1px $error;
+    border-radius: 5px;
+    color: $error;
+    font-weight: 500;
+  }
+  .message{
+    .success{
+      margin-top: 10px;
+      padding: 10px;
+      background-color: $success_light;
+      border: solid 1px $error;
+      border-radius: 5px;
+      color: $success;
+      font-weight: 500;
+    }
+  }
+  .message_container{
+    p{
+      padding: 5px;
+      margin: 0;
+    }
+  }
