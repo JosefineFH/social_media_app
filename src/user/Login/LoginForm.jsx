@@ -4,7 +4,7 @@ import { Button, Form, InputGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BASE_URL, TOKEN_PATH } from "../../constants/api";
 import AuthContext from "../../context/AuthContext";
-import GetFromLocalStorage from "./CheckifLogedIn";
+import GetFromLocalStorage from "../../Hooks/CheckifLogedIn";
 import {MdOutlineAlternateEmail} from "react-icons/md"
 import {BiLockAlt} from 'react-icons/bi';
 import FormError from "../../components/Common/FormError";
@@ -12,14 +12,16 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function LoginForm(){
+  GetFromLocalStorage();
+
+
   const url = BASE_URL + TOKEN_PATH;
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
   let history = useNavigate();
-  GetFromLocalStorage();
 //   {
 //     "email": "josefine@noroff.no",
-//     "password": "17mars90"
+//     "password": "17Mars90"
 // }
 
 const {
@@ -95,7 +97,7 @@ const {
 </div>
 <div className="message"></div>
 <div className="register_link-container">
-    <p>If you don't have a user. you can register <a href="/register">Her!</a></p>
+    <p>If you don't have a user. You can register <a href="/register">Her!</a></p>
 </div>
     </>
   );

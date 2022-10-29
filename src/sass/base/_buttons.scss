@@ -7,8 +7,25 @@
   border-radius: 50px;
   font-size: 20px;
   &:hover {
-    background-color: $white;
+    background-color: #F2EFE9;
     color: $primary_dark;
-    border-color: $primary_dark;
+    border-color: $orange;
+  }
+}
+
+.load_button{
+  margin: auto;
+  background-color: $primary_dark;
+  border-color: $primary_dark;
+  color: $white;
+  border-width: 2px;
+  width: 200px;
+  height: 50px;
+  border-radius: 50px;
+  font-size: 20px;
+  &:hover {
+    background-color: transparent;
+    color: $primary_dark;
+    border-color: $orange;
   }
 }

@@ -4,13 +4,16 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import Home from "../../Views/Home";
 import Login from "../../user/Login/Login"
 import { AuthProvider } from "../../context/AuthContext";
 import Dashboard from "../../user/Dashboard/Dashboard";
 import RegisterUser from "../../user/Register/RegisterUser";
+import PostDetails from "../../user/Dashboard/Post/PostDetails";
+import Profile from "../../user/Dashboard/Profiles/Profile";
 
 export default function NavigationLayout() {
+  const items = JSON.parse(localStorage.getItem('user authentication'));
+  
   return (
     <AuthProvider>
       <Router>
@@ -20,16 +23,17 @@ export default function NavigationLayout() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/login">Login</Nav.Link>
+              
             </Nav>
           </Navbar.Collapse>
         </Navbar>
         <Container fluid>
           <Routes>
-            <Route path="/" exact element={<Home />} />
-            <Route path="/login" exact element={<Login />} />
+            <Route path="/" exact element={<Login />} />
             <Route path="/dashboard" exact element={<Dashboard />} />
             <Route path="/register" exact element={<RegisterUser />} />
+            <Route path="/post/:id" element={<PostDetails />} />
+            <Route path="/profile/:name" element={<Profile />} />
           </Routes>
         </Container>
       </Router>

@@ -1,10 +1,15 @@
 @import "./base/color";
+@import "./base/base";
+@import "./base/variabels";
 @import "./base/typography";
 @import "./base/layout";
 @import "./base/buttons";
 
 // Pages
+@import "./pages/postDetails";
 @import "./pages/posts";
 
 // Components
 @import "./components/forms";
+@import "./components/card";
+@import "./components/sideBar";

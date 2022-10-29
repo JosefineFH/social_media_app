@@ -1,8 +1,3 @@
-// {
-//   "name": ""testulf"",
-//   "email": "testulf@stud.noroff.no",
-//   "password": "testulf1234"
-// }
 import axios from "axios";
 import { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
@@ -29,20 +24,23 @@ export default function RegisterUserForm() {
   const url = BASE_URL + REGISTER_PATH
 
   async function onSubmit(data) {
-    const response = await axios.post(url, data);
-        const message = document.querySelector(".message")
+    const message = document.querySelector(".message")
 
     setSubmitting(true);
     setLoginError(null);
 
     try {
-      const response = await axios.post(url, data);
-      message.innerHTML = `<div className="success"><p>You ar now logging in!</p></div>`;
+   
+      await axios.post(url, data);
+      message.innerHTML = `<div className="success"><p>You ar now registered in!</p></div>`;
 
       setTimeout(() => {
         history("/login");
       }, 1000);
-    } catch (error) {
+      console.log()
+    } 
+    
+    catch (error) {
       console.log("error", error);
 			setLoginError(error.toString());
     } finally {
@@ -61,7 +59,8 @@ export default function RegisterUserForm() {
               <div className="input_group-container">
                 <InputGroup.Text id="basic-addon1"><FaUserAlt /></InputGroup.Text>
                 <Form.Control
-                  {...register("name", { required: true, minLength: 5})}
+                  // {...register("name")}
+                  {...register("name", { required: true, minLength: 5, pattern: /^[a-zA-z0-9_]+$/})}
                   type="text"
                   placeholder="Enter name..."
                 />
@@ -75,6 +74,7 @@ export default function RegisterUserForm() {
               <div className="input_group-container">
                 <InputGroup.Text id="basic-addon1"><MdOutlineAlternateEmail /></InputGroup.Text>
                 <Form.Control
+                  // {...register("email")}
                   {...register("email", { required: true, minLength: 3, pattern: /^[A-Za-z0-9._%+-]+@(stud\.noroff|noroff)\.no$/})}
                   type="email"
                   placeholder="Enter email..."
@@ -87,13 +87,13 @@ export default function RegisterUserForm() {
             </InputGroup>
 
             <Form.Label htmlFor="basic-url"></Form.Label>
-
             <InputGroup className="mb-3">
               <div className="input_group-container">
 
                 <InputGroup.Text><BiLockAlt /></InputGroup.Text>
                 <Form.Control
                   name="password"
+                  // {...register("password")}
                   {...register("password", { required: true, minLength: 8 })}
                   type="password"
                   placeholder="Password..."
@@ -101,10 +101,36 @@ export default function RegisterUserForm() {
               </div>
                 {errors.password && <span className="error">The message must be at least 8 characters</span>}
             </InputGroup>
+
+            <Form.Label>Avatar</Form.Label>
+            <InputGroup className="mb-3">
+              <div className="input_group-container">
+
+                <InputGroup.Text><BiLockAlt /></InputGroup.Text>
+                <input name="avatar" 
+                {...register("avatar")} 
+                type="url" 
+                />
+              </div>
+            </InputGroup>
+
+            <Form.Label>banner</Form.Label>
+            <InputGroup className="mb-3">
+              <div className="input_group-container">
+
+                <InputGroup.Text><BiLockAlt /></InputGroup.Text>
+                <input name="banner" 
+                {...register("banner")} 
+                type="url" 
+                />
+              </div>
+            </InputGroup>
+
+
           </Form.Group>
 
           <Button className="primary" type="submit">
-            Login
+            Register
           </Button>
         </Form>
       </div>

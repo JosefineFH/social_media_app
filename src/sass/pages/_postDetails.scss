@@ -1,0 +1,15 @@
+.info_container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  div{
+    padding: 0 20px;
+    p{
+      display: inline;
+      color: gray;
+    }
+    span{
+      text-transform: capitalize;
+    }
+  }
+}
