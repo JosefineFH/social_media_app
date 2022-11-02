@@ -1,7 +1,7 @@
 import Heading from "../../components/Common/Heading";
 import EditUser from "../../components/SideBar/SideBare";
 import GetFromLocalStorage, { userName } from "../../Hooks/CheckifLogedIn";
-import GetPosts from "./PostList";
+import GetPosts from "./Posts/PostList";
 
 export default function Dashboard() {
   GetFromLocalStorage();
@@ -10,15 +10,8 @@ export default function Dashboard() {
 
   return (
     <div>
-      <div className="dashboard_layout">
-        <div className="sidebar_container">
-          <EditUser />
-        </div>
-        <div className="post_container">
           <h1>Welcome {items.name}</h1>
           <GetPosts />
-        </div>
-      </div>
     </div>
   );
 }

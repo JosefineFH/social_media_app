@@ -37,14 +37,20 @@
   }
 
 
-  //Dashboard page
-  .dashboard_layout{
+  //profile page
+  .banner_container{
+    max-width: 100%;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .profile_container{
     display: grid;
     @media(min-width: 574px){
       grid-template-columns: 200px  1fr;
       column-gap: 10px;
     }
-
     .sidebar_container{
       order: 2;
       border-top: 2px solid $primary_dark;
@@ -55,6 +61,23 @@
         order: unset;
         margin-top: 4rem;
       }
+      .input_group-container{
+        max-width: unset !important;
+        border: unset !important;
 
+      }      
     }
+    .following_container{
+      max-width: 200px;
+      display: flex;
+      justify-content: space-between;
+      margin: auto;
+      p{
+        font-weight: bold;
+      }
+      
+    }
+  }
+  .content_container{
+    margin-top: 40px;
   }

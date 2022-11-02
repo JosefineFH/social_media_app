@@ -12,7 +12,9 @@ useEffect(() => {
   if(items === null ){
     console.log("You are not logged in");
     history("/");
-  } 
+  } else{
+    history("/dashboard");
+  }
 
 }, []);
 }

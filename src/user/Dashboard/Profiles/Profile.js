@@ -1,15 +1,20 @@
 import Heading from "../../../components/Common/Heading";
-import GetFromLocalStorage from "../../../Hooks/CheckifLogedIn";
-import GetProfile from "./Profiles";
+import { useNavigate } from "react-router-dom";
+import GetProfileDetails from "./ProfileDetails"
+
 
 export default function Profile() {
-  GetFromLocalStorage();
+  let history = useNavigate();
+  const items = JSON.parse(localStorage.getItem('user authentication'));
+  if(items === null){
+    history("/");
+  }
 
   return (
     <div>
       <Heading title="The user Profile" />
       <div>
-        <GetProfile />
+       <GetProfileDetails/>
       </div>
     </div>
   );

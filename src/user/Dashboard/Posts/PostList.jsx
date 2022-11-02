@@ -2,8 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Card, CardGroup, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { BASE_URL } from "../../constants/api";
-import missingImage from "../../assets/image_missing.png";
+import { BASE_URL } from "../../../constants/api";
+import missingImage from "../../../assets/image_missing.png";
 import { slice } from "lodash";
 
 
