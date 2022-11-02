@@ -1,27 +1,107 @@
-import { useState } from "react";
-import { Form } from "react-bootstrap"
+import axios from "axios";
+import { useContext, useState } from "react";
+import { Button, Form, InputGroup } from "react-bootstrap"
+import { useForm } from "react-hook-form";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css'
+import { useNavigate } from "react-router";
+import { BASE_URL } from "../../constants/api";
+import AuthContext from "../../context/AuthContext";
 
 export default function CreatePost() {
+  let navigate = useNavigate();
+  const [convertedText, setConvertedText] = useState();
+  const [auth, setAuth] = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(null);
+  const url = BASE_URL + "/posts"
+  
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const [convertedText, setConvertedText] = useState("Some default content");
+
+  async function CreatePost(data){
+    const options = {
+      headers: { Authorization: `Bearer ${auth.accessToken}` },
+    };
+    const formData = data;
+    // const tagArray = [{'tags' : data.tags}]
+    // formData.tags
+    console.log(formData.tags)
+    // console.log(tagArray)
+    console.log(data)
+
+    // try {
+    //   const response =  await axios.post(url, options)
+    //   console.log(response.data)
+      
+    // } catch (error) {
+    //   console.log(error)
+    // }finally{
+    //   console.log("data is sendt")
+    // }
+  }
+
+  //   if (isLoading) {
+  //   if (!auth) {
+  //     navigate('/')
+  //   }
+  //   return <div>Loading</div>;
+  // }
+  // if (isError) {
+  //   return <div>{isError}</div>;
+  // }
 
   return (
-    <Form>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Title</Form.Label>
-        <Form.Control type="text" placeholder="name@example.com" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Example textarea</Form.Label>
-        <ReactQuill
-        theme='snow'
-        value={convertedText}
-        onChange={setConvertedText}
-        style={{minHeight: '300px'}}
-      />
-      </Form.Group>
+    <Form onSubmit={handleSubmit(CreatePost)}>
+      <InputGroup className="mb-3">
+          <Form.Label>Title </Form.Label>
+          <div className="input_group-container">
+            <input name="title"
+              {...register("title", { required: true})}
+              type="text"
+            />
+          </div>
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <Form.Label>Body </Form.Label>
+          <div className="input_group-container">
+            <textarea name="body"
+              {...register("body")}
+              type="text"
+            />
+          </div>
+        </InputGroup>
+
+      <InputGroup className="mb-3">
+          <Form.Label>media (use url)</Form.Label>
+          <div className="input_group-container">
+            <input name="media"
+              {...register("media")}
+              type="url"
+            />
+          </div>
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <Form.Label>Tags </Form.Label>
+          <div className="input_group-container">
+            <input name="tags"
+              {...register("tags")}
+              type="text"
+              data-role="taginput"
+              data-tag-trigger="Space"
+            />
+          </div>
+        </InputGroup>
+
+        <Button className="primary" type="submit">
+          Update
+        </Button>
     </Form>
   )
 }

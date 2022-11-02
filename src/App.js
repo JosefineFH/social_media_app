@@ -1,12 +1,15 @@
 import "./App.css";
-import "./css/style.css"
+import "./css/style.css";
 import NavigationLayout from "./components/Common/Navigation";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
-    <div className="App">
-      <NavigationLayout />
-    </div>
+    <AuthProvider>
+      <div className="App">
+        <NavigationLayout />
+      </div>
+    </AuthProvider>
   );
 }
 

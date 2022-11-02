@@ -5,49 +5,58 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BASE_URL } from "../../../constants/api";
 import missingImage from "../../../assets/image_missing.png"
 import GetUserPost from "../../UserProfile/GetUserPost";
+import { useContext } from "react";
+import AuthContext from "../../../context/AuthContext";
 
-export default function GetProfileDetails(props){
+export default function GetProfileDetails(props) {
   let navigate = useNavigate();
-  let username
+  const items = JSON.parse(localStorage.getItem('user authentication'));
+  const [auth, setAuth] = useContext(AuthContext);
+  const [userData, setUserData] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(null);
 
-  if(props != null){
-    username = props.name
-  } else {
-    const items = JSON.parse(localStorage.getItem('user authentication'));
-    username = items.name
-  }
+  const url = BASE_URL + `/profiles/${props.name}?_followers=true&_following=true&_posts=true`;
 
-  const[userData, setUserData] = useState();
-  const message = document.querySelector(".message");
-  const url = BASE_URL + `/profiles/${username}?_followers=true&_following=true&_posts=true`;
-
- useEffect(() => {
-  async function getUserDetails(){
-    const items = JSON.parse(localStorage.getItem('user authentication'));
-    const token = items.accessToken;
-    const options = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
-    try {
-      const response = await axios.get(url, options);
-      const userDetails = response.data
-      setUserData(response.data)
-    } catch (error) {
-     console.log(error) 
+  useEffect(() => {
+    async function getUserDetails() {
+      const token = items.accessToken;
+      const options = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
+      try {
+        const response = await axios.get(url, options);
+        const userDetails = response.data
+        setUserData(userDetails)
+      } catch (error) {
+        console.log(error)
+        setIsError("There was an error fetching your profile");
+      } finally {
+        setIsLoading(false);
+      }
     }
+    getUserDetails();
+  }, [])
+
+  if (isLoading) {
+    if (!auth) {
+      navigate('/')
+    }
+    return <div>Loading</div>;
   }
-  getUserDetails();
- }, [])
- 
-  return(
+
+  if (isError) {
+    return <div>{isError}</div>;
+  }
+  return (
     <div>
-      {/* <h1>{userData.name}</h1> */}
+      <h1>{props.name}</h1>
       <div className="following_container">
-        {/* <p>Followers: {userData.followers.length}</p> */}
-        | 
-        {/* <p>Following: {userData.following.length}</p> */}
+        <p>Followers: {userData.followers.length}</p>
+        |
+        <p>Following: {userData.following.length}</p>
       </div>
-      {/* <GetUserPost name={userData.name}/> */}
+      <GetUserPost name={userData.name} />
     </div>
   )
 }

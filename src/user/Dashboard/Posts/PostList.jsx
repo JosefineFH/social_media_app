@@ -1,54 +1,71 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Card, CardGroup, Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import { BASE_URL } from "../../../constants/api";
 import missingImage from "../../../assets/image_missing.png";
 import { slice } from "lodash";
-
+import { useContext } from "react";
+import AuthContext from "../../../context/AuthContext";
 
 export default function GetPosts() {
-
+  const [auth, setAuth] = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
   const [index, setIndex] = useState(6);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+	const [isError, setIsError] = useState(null);
   const initialPosts = slice(posts, 0, index)
   const url = BASE_URL + "/posts?_author=true";
+  const navigate = useNavigate();
 
   useEffect(function () {
     async function getPosts() {
-      const items = JSON.parse(localStorage.getItem('user authentication'));
-      const token = items.accessToken;
-      const options = {
-        headers: { Authorization: `Bearer ${token}` },
-      };
-      try {
-        const response = await axios.get(url, options);
-        const posts = response.data;
-        // console.log(posts)
-        setPosts(posts);
-        // setPhotoURL(posts.media)
-      } catch (error) {
-        console.log(error)
-        // setError(error.toString());
-      } finally {
-        // setLoader(false);
+      if(auth === null){
+        navigate('/')
+      }else{
+        const token = auth.accessToken;
+        const options = {
+          headers: { Authorization: `Bearer ${token}` },
+        };
+        try {
+          const response = await axios.get(url, options);
+          const posts = response.data;
+          setPosts(posts);
+          // setPhotoURL(posts.media)
+        } catch (error) {
+          console.log(error)
+          setIsError("There was an error fetching the profile");
+        } finally {
+          setIsLoading(false);
+        }
       }
-    }
+      }
 
     getPosts();
   }, []);
   const loadMore = () => {
     setIndex(index + 6)
-    console.log(index)
     if(index >= posts.length){
-      console.log(posts.length)
-      console.log(initialPosts)
       setIsCompleted(true)
     }else{
       setIsCompleted(false)
     }
   }
+
+
+  if (isLoading) {
+    if(!auth){
+      navigate('/')
+    }
+  
+		return <div>Loading</div>;
+	}
+
+	if (isError) {
+		return <div>{isError}</div>;
+	}
+
 
   return (
     <>

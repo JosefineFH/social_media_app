@@ -19,10 +19,6 @@ export default function LoginForm(){
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
   let history = useNavigate();
-//   {
-//     "email": "josefine@noroff.no",
-//     "password": "17Mars90"
-// }
 
 const {
   register,
@@ -30,7 +26,7 @@ const {
   formState: { errors },
 }  = useForm();
 
-  const [auth, setAuth] = useContext(AuthContext);
+const [auth, setAuth] = useContext(AuthContext);
 
   async function onSubmit(data) {
     const message = document.querySelector(".message")
