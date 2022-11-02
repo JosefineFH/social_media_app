@@ -14,15 +14,15 @@ import UserProfile from "../../user/UserProfile/UserProfile";
 import CreatePost from "../../user/UserProfile/CreatePosts";
 
 export default function NavigationLayout() {
-  const items = JSON.parse(localStorage.getItem('user authentication'));
+  // const items = JSON.parse(localStorage.getItem('user authentication'));
   // console.log(items)
   let isLoggedIn;
 
-  if (!items.accessToken) {
-    isLoggedIn = false
-  } else {
-    isLoggedIn = true
-  }
+  // if (!items.accessToken) {
+  //   isLoggedIn = false
+  // } else {
+  //   isLoggedIn = true
+  // }
   return (
     <>
       <AuthProvider>
@@ -34,7 +34,7 @@ export default function NavigationLayout() {
               <Nav className="mr-auto">
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/users">Users</Nav.Link>
-                <NavDropdown title={items.name} id="basic-nav-dropdown">
+                <NavDropdown id="basic-nav-dropdown">
                   <NavDropdown.Item href="/user">Profile</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
                     View your posts
