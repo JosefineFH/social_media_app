@@ -2,18 +2,18 @@ import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  useNavigate,
+  Route
 } from 'react-router-dom';
-import Login from "../../user/Login/Login"
+import Login from "../../pages/Login/Login"
 import AuthContext, { AuthProvider } from "../../context/AuthContext";
-import Dashboard from "../../user/Dashboard/Dashboard";
-import RegisterUser from "../../user/Register/RegisterUser";
-import PostDetails from "../../user/Dashboard/Post/PostDetails";
-import Profile from "../../user/Dashboard/Profiles/Profile";
-import UserProfile from "../../user/UserProfile/UserProfile";
-import CreatePost from "../../user/UserProfile/CreatePosts";
+import Dashboard from "../../pages/Dashboard/Dashboard";
+import RegisterUser from "../../pages/Register/RegisterUser";
+import PostDetails from "../../pages/Post/PostDetails";
+import Profile from "../../pages/Profile/Profile";
+import UserProfile from "../profile/UserProfile";
 import { useContext } from "react";
+import CreatePost from "../../pages/Post/CreatesPost";
+// import CreatePost from "../profile/CreatePosts";
 
 export default function NavigationLayout() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -54,6 +54,7 @@ export default function NavigationLayout() {
               <Route path="/post/:id" element={<PostDetails />} />
               <Route path="/user" element={<UserProfile />} />
               <Route path="/createposts" element={<CreatePost />} />
+            <Route path="/profile/:name" element={<Profile />} />
 
             </Routes>
           </Container>

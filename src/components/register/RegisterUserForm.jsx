@@ -6,7 +6,7 @@ import { BASE_URL, REGISTER_PATH } from "../../constants/api";
 import { MdOutlineAlternateEmail } from "react-icons/md"
 import { FaUserAlt } from 'react-icons/fa';
 import { BiLockAlt } from 'react-icons/bi'
-import FormError from "../../components/Common/FormError";
+import FormError from "../Common/FormError";
 import { useNavigate } from "react-router-dom";
 
 
@@ -19,7 +19,7 @@ export default function RegisterUserForm() {
     register,
     handleSubmit,
     formState: { errors },
-  }  = useForm();
+  } = useForm();
 
   const url = BASE_URL + REGISTER_PATH
 
@@ -30,19 +30,19 @@ export default function RegisterUserForm() {
     setLoginError(null);
 
     try {
-   
+
       await axios.post(url, data);
       message.innerHTML = `<div className="success"><p>You ar now registered in!</p></div>`;
 
       setTimeout(() => {
-        history("/login");
+        history("/");
       }, 1000);
       console.log()
-    } 
-    
+    }
+
     catch (error) {
       console.log("error", error);
-			setLoginError(error.toString());
+      setLoginError(error.toString());
     } finally {
       setSubmitting(false);
     }
@@ -50,7 +50,7 @@ export default function RegisterUserForm() {
   return (
     <>
       <div>
-      {loginError && <FormError>{loginError}</FormError>}
+        {loginError && <FormError>{loginError}</FormError>}
         <Form className="form_container" onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mb-3" >
 
@@ -59,8 +59,7 @@ export default function RegisterUserForm() {
               <div className="input_group-container">
                 <InputGroup.Text id="basic-addon1"><FaUserAlt /></InputGroup.Text>
                 <Form.Control
-                  // {...register("name")}
-                  {...register("name", { required: true, minLength: 5, pattern: /^[a-zA-z0-9_]+$/})}
+                  {...register("name", { required: true, minLength: 5, pattern: /^[a-zA-z0-9_]+$/ })}
                   type="text"
                   placeholder="Enter name..."
                 />
@@ -75,7 +74,7 @@ export default function RegisterUserForm() {
                 <InputGroup.Text id="basic-addon1"><MdOutlineAlternateEmail /></InputGroup.Text>
                 <Form.Control
                   // {...register("email")}
-                  {...register("email", { required: true, minLength: 3, pattern: /^[A-Za-z0-9._%+-]+@(stud\.noroff|noroff)\.no$/})}
+                  {...register("email", { required: true, minLength: 3, pattern: /^[A-Za-z0-9._%+-]+@(stud\.noroff|noroff)\.no$/ })}
                   type="email"
                   placeholder="Enter email..."
 
@@ -83,7 +82,7 @@ export default function RegisterUserForm() {
               </div>
               <div className="message_container">
               </div>
-                {errors.email && <span className="error">Please enter a valid email address <br/>The email most be a @stud.noroff.no or noroff.no</span>}
+              {errors.email && <span className="error">Please enter a valid email address <br />The email most be a @stud.noroff.no or noroff.no</span>}
             </InputGroup>
 
             <Form.Label htmlFor="basic-url"></Form.Label>
@@ -99,7 +98,7 @@ export default function RegisterUserForm() {
                   placeholder="Password..."
                 />
               </div>
-                {errors.password && <span className="error">The message must be at least 8 characters</span>}
+              {errors.password && <span className="error">The message must be at least 8 characters</span>}
             </InputGroup>
 
             <Form.Label>Avatar</Form.Label>
@@ -107,9 +106,9 @@ export default function RegisterUserForm() {
               <div className="input_group-container">
 
                 <InputGroup.Text><BiLockAlt /></InputGroup.Text>
-                <input name="avatar" 
-                {...register("avatar")} 
-                type="url" 
+                <input name="avatar"
+                  {...register("avatar")}
+                  type="url"
                 />
               </div>
             </InputGroup>
@@ -119,9 +118,9 @@ export default function RegisterUserForm() {
               <div className="input_group-container">
 
                 <InputGroup.Text><BiLockAlt /></InputGroup.Text>
-                <input name="banner" 
-                {...register("banner")} 
-                type="url" 
+                <input name="banner"
+                  {...register("banner")}
+                  type="url"
                 />
               </div>
             </InputGroup>

@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants/api";
 import AuthContext from "../../context/AuthContext";
+import missingAvatar from "../../assets/image_missing.png";
+
 
 export default function EditUser() {
   let navigate = useNavigate();
@@ -55,10 +57,20 @@ export default function EditUser() {
     }
   }
 
+  let avatar;
+  console.log(auth.banner.length)
+  
+  if(auth.avatar.length === 0){
+    avatar = missingAvatar;
+  }else{
+    avatar = auth.avatar
+  }
+  console.log(avatar)
+  
   return (
     <>
       <p>Edit your profile {auth.name}</p>
-      <img className="profile_image" src={auth.avatar} />
+      <img className="profile_image" src={avatar} />
       <Form className="form_container" onSubmit={handleSubmit(updateUser)}>
 
         <InputGroup className="mb-3">
@@ -78,7 +90,7 @@ export default function EditUser() {
             <input name="avatar"
               {...register("avatar")}
               type="url"
-              defaultValue={auth.avatar}
+              defaultValue={avatar}
             />
           </div>
         </InputGroup>

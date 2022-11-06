@@ -1,26 +1,25 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Heading from "../../../components/Common/Heading";
-import Loader from "../../../components/Common/Loader";
-import { BASE_URL } from "../../../constants/api";
-import missingImage from "../../../assets/image_missing.png";
+import Loader from "../../components/Common/Loader";
+import { BASE_URL } from "../../constants/api";
+import missingImage from "../../assets/image_missing.png";
 
 export default function PostDetails() {
   const [page, setPage] = useState(null);
   const [loader, setLoader] = useState(true);
   const [error, setError] = useState(null);
 
-  
   let navigate = useNavigate();
   const { id } = useParams();
   if (!id) {
     navigate.push("/");
   }
-  const url = BASE_URL + `/posts/${id}?_author=true&_reactions=true&_comments=true`;
+  const url =
+    BASE_URL + `/posts/${id}?_author=true&_reactions=true&_comments=true`;
   useEffect(function () {
     async function getPost() {
-      const items = JSON.parse(localStorage.getItem('user authentication'));
+      const items = JSON.parse(localStorage.getItem("user authentication"));
       const token = items.accessToken;
       const options = {
         headers: { Authorization: `Bearer ${token}` },
@@ -28,20 +27,18 @@ export default function PostDetails() {
 
       try {
         const response = await axios.get(url, options);
-        console.log(response)
+        console.log(response);
         setPage(response.data);
       } catch (error) {
-        console.log(error)
+        console.log(error);
         // setError(error.toString());
       } finally {
         setLoader(false);
       }
     }
-    
+
     getPost();
-
   }, []);
-
 
   if (loader) {
     return (
@@ -55,31 +52,42 @@ export default function PostDetails() {
   //   return <div>Error: An error occurred</div>;
   // }
 
-
   let image = missingImage;
   if (page.media) {
     image = page.media;
   }
-  console.log(image)
+  console.log(image);
   return (
     <>
       <div>
-        <img src={image}/>
+        <img src={image} />
       </div>
       <h1>{page.title}</h1>
 
       <div className="info_container">
-        <div><p>Created:</p><span>{page.created}</span></div>
-        <div><p>Author:</p> <span><Link to={`/profile/${[page.author.name]}`} key={page.author.name} value={page.author.name} className="button">{page.author.name}</Link></span></div>
+        <div>
+          <p>Created:</p>
+          <span>{page.created}</span>
+        </div>
+        <div>
+          <p>Author:</p>{" "}
+          <span>
+            <Link
+              to={`/profile/${[page.author.name]}`}
+              key={page.author.name}
+              value={page.author.name}
+              className="button"
+            >
+              {page.author.name}
+            </Link>
+          </span>
+        </div>
       </div>
       <div>
-
         <div>
           <p>{page.body}</p>
         </div>
       </div>
-    
-      
     </>
   );
 }
