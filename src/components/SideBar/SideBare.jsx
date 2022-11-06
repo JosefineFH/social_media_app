@@ -28,7 +28,6 @@ export default function EditUser() {
     };
 
     const updateUrl = url + '/media'
-    console.log(updateUrl)
 
     try {
       const response = await axios.put(updateUrl, data, options)
@@ -58,14 +57,12 @@ export default function EditUser() {
   }
 
   let avatar;
-  console.log(auth.banner.length)
   
   if(auth.avatar.length === 0){
     avatar = missingAvatar;
   }else{
     avatar = auth.avatar
   }
-  console.log(avatar)
   
   return (
     <>

@@ -6,7 +6,7 @@ import missingBanner from "../../assets/banner_missing.png"
 
 export default function UserProfile() {
   const [auth, setAuth] = useContext(AuthContext);
-  console.log(auth.banner.length)
+
   let banner;
   if(auth.banner.length === 0){
     banner = banner = missingBanner;

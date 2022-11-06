@@ -13,7 +13,8 @@ import Profile from "../../pages/Profile/Profile";
 import UserProfile from "../profile/UserProfile";
 import { useContext } from "react";
 import CreatePost from "../../pages/Post/CreatesPost";
-// import CreatePost from "../profile/CreatePosts";
+import ViewUserPosts from "../../pages/Profile/ViewUserPosts";
+import EditPost from "../../pages/Post/EditPost";
 
 export default function NavigationLayout() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -32,7 +33,7 @@ export default function NavigationLayout() {
                     <Nav.Link >{auth.name}</Nav.Link>
                     <NavDropdown id="basic-nav-dropdown">
                       <NavDropdown.Item href="/user">Profile</NavDropdown.Item>
-                      <NavDropdown.Item href="#action/3.2">
+                      <NavDropdown.Item href="/viewPosts">
                         View your posts
                       </NavDropdown.Item>
                       <NavDropdown.Item href="/createposts">Create new post</NavDropdown.Item>
@@ -54,7 +55,9 @@ export default function NavigationLayout() {
               <Route path="/post/:id" element={<PostDetails />} />
               <Route path="/user" element={<UserProfile />} />
               <Route path="/createposts" element={<CreatePost />} />
-            <Route path="/profile/:name" element={<Profile />} />
+              <Route path="/profile/:name" element={<Profile />} />
+              <Route path="/viewPosts" element={<ViewUserPosts />} />
+              <Route path="/editPost/:id" element={<EditPost />} />
 
             </Routes>
           </Container>

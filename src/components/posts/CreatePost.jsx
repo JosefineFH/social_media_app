@@ -22,16 +22,25 @@ export default function CreatePostForm(){
   
   
     async function CreatePost(data){
+      const message = data.body;
+      const title = data.title;
+      const tags = [];
+      const media = data.media
+      tags.push(data.tags)
+
+      const formData = {
+        title: title,
+        body: message,
+        tags: tags,
+        media:media
+      };
+
       const options = {
         headers: { Authorization: `Bearer ${auth.accessToken}` },
       };
-      // const tagArray = [{'tags' : data.tags}]
-      // formData.tags
-      // console.log(tagArray)
-      console.log(data)
   
       try {
-        const response =  await axios.post(url, data, options)
+        const response =  await axios.post(url, formData, options)
         console.log(response.data)
         
       } catch (error) {

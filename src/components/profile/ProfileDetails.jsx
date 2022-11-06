@@ -6,7 +6,6 @@ import { BASE_URL } from "../../constants/api";
 import missingImage from "../../assets/image_missing.png";
 import missingAvatar from "../../assets/image_missing.png";
 import missingBanner from "../../assets/banner_missing.png"
-import GetUserPost from "./GetUserPost";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 
@@ -18,7 +17,6 @@ export default function GetProfileDetails(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
   const [posts, setPosts] = useState([])
-  console.log(posts)
 
   const url = BASE_URL + `/profiles/${props.name}?_followers=true&_following=true&_posts=true`;
 
@@ -31,7 +29,6 @@ export default function GetProfileDetails(props) {
       try {
         const response = await axios.get(url, options);
         const userDetails = response.data
-        // console.log(userDetails)
         setPosts(userDetails.posts)
         setUserData(userDetails)
       } catch (error) {
@@ -50,7 +47,6 @@ export default function GetProfileDetails(props) {
     }
     return <div>Loading</div>;
   }
-  console.log(posts)
   if (isError) {
     return <div>{isError}</div>;
   }
@@ -92,7 +88,6 @@ export default function GetProfileDetails(props) {
             if (post.media) {
               image = post.media;
             }
-            console.log(post.title)
             return (
               <>
                 <div className="post_details">
@@ -119,7 +114,28 @@ export default function GetProfileDetails(props) {
           |
           <p>Following: {userData.following.length}</p>
         </div>
-        <GetUserPost name={userData.name} />
+        <div className="posts_container">
+          {posts.map((post) => {
+            let image = missingImage;
+
+            if (post.media) {
+              image = post.media;
+            }
+            return (
+              <>
+                <div className="post_details">
+                  <div>
+                    <img src={image} />
+                  </div>
+                  <div className="text_container">
+                    <h2>{post.title}</h2>
+                    <Link to={`/post/${[post.id]}`} key={post.id} value={post.id} className="button">Read More</Link>
+                  </div>
+                </div>
+              </>
+            )
+          })}
+        </div>
       </div>
     )
   }
