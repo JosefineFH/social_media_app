@@ -53,7 +53,7 @@ export default function GetPostsList(){
             <div>
               <h2>{post.title}</h2>
               <DeletePost onClick={DeletePost} key={post.id} id={post.id}>Delete</DeletePost>
-              <Link>Edit</Link>
+              <Link to={`/editPost/${post.id}`}>Edit</Link>
             </div>
           )
         })}
