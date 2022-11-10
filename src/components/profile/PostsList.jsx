@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { BASE_URL } from "../../constants/api";
 import { Link } from "react-router-dom";
+import DeletePost from "../posts/DeletePost";
 
 export default function GetPostsList(){
   // const navigate = useNavigate();
@@ -51,8 +52,8 @@ export default function GetPostsList(){
           return(
             <div>
               <h2>{post.title}</h2>
-              <Link>Delete</Link>
-              <Link to={`/editPost/${post.id}`}>Edit</Link>
+              <DeletePost onClick={DeletePost} key={post.id} id={post.id}>Delete</DeletePost>
+              <Link>Edit</Link>
             </div>
           )
         })}
