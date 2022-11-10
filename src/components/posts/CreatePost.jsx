@@ -2,17 +2,18 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap"
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants/api";
 import AuthContext from "../../context/AuthContext";
 
 export default function CreatePostForm(){
-    // let navigate = useNavigate();
     const [convertedText, setConvertedText] = useState();
     const [auth, setAuth] = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(null);
     const url = BASE_URL + "/posts"
+    const navigate  = useNavigate();
+    const [successMessage, setSuccessMessage] = useState(null)
     
     const {
       register,
@@ -41,14 +42,25 @@ export default function CreatePostForm(){
   
       try {
         const response =  await axios.post(url, formData, options)
-        console.log(response.data)
-        
+        console.log(response)
+        if(response.status === 200){
+          setSuccessMessage(<p>Your post has been posted</p>)
+          setTimeout(() => {
+            navigate("/dashboard");
+          }, 2000);
+        }
       } catch (error) {
         console.log(error)
+        setIsError(error.response.data.errors[0].message)
       }finally{
         // console.log("data is sendt")
       }
+      if (isError) {
+        return <div>{isError}</div>;
+      }
     }
+
+    console.log(successMessage)
   
     //   if (isLoading) {
     //   if (!auth) {
@@ -60,7 +72,8 @@ export default function CreatePostForm(){
     //   return <div>{isError}</div>;
     // }
   
-    return (
+    return (<>
+    <div className="message">{successMessage}</div>
       <Form onSubmit={handleSubmit(CreatePost)}>
         <InputGroup className="mb-3">
             <Form.Label>Title </Form.Label>
@@ -71,6 +84,7 @@ export default function CreatePostForm(){
                 placeholder="Enter title..."
               />
             </div>
+            {errors.title && <span className="error">Please enter a title</span>}
           </InputGroup>
   
           <InputGroup className="mb-3">
@@ -81,6 +95,7 @@ export default function CreatePostForm(){
                 type="text"
               />
             </div>
+            {errors.body && <span className="error">Please enter a something in the body. Max 280 symboled</span>}
           </InputGroup>
   
         <InputGroup className="mb-3">
@@ -91,6 +106,7 @@ export default function CreatePostForm(){
                 type="url"
               />
             </div>
+            {errors.media && <span className="error">Please enter a image url</span>}
           </InputGroup>
   
           <InputGroup className="mb-3">
@@ -107,5 +123,6 @@ export default function CreatePostForm(){
             Update
           </Button>
       </Form>
+      </>
     )
 }
