@@ -37,7 +37,7 @@ export default function RegisterUserForm() {
       setTimeout(() => {
         history("/");
       }, 1000);
-      console.log()
+
     }
 
     catch (error) {
