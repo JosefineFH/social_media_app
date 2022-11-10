@@ -11,10 +11,12 @@ export default function GetPostsList(){
   const [auth, setAuth] = useContext(AuthContext);
   const userName = auth.name
   const url = BASE_URL + `/profiles/${userName}/posts`;
-  console.log(url)
+
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
+  const [message, setMessage] = useState(null)
+
   useEffect(function () {
     async function getPosts() {
       if (auth === null) {
@@ -24,11 +26,12 @@ export default function GetPostsList(){
         const options = {
           headers: { Authorization: `Bearer ${token}` },
         };
-        console.log(options)
         try {
           const response = await axios.get(url, options);
-          const posts = response.data;
-          setPosts(posts);
+          const postsData = response.data;
+            setPosts(postsData);
+            console.log(postsData)
+          
         } catch (error) {
           setIsError("There was an error fetching your posts");
         } finally {
@@ -39,19 +42,22 @@ export default function GetPostsList(){
 
     getPosts();
   }, []);
+  if(posts.length === 0){
+    return <p>You don't have any posts. Add your first post <a href="/createposts">her!</a></p>;
+  }else{
+    return(
+      <>
+        {posts.map((post) => {  
+          return(
+            <div>
+              <h2>{post.title}</h2>
+              <Link>Delete</Link>
+              <Link to={`/editPost/${post.id}`}>Edit</Link>
+            </div>
+          )
+        })}
+      </>
+    )
 
-
-  return(
-    <>
-      {posts.map((post) => {
-        return(
-          <div>
-            <h2>${post.title}</h2>
-            <Link>Delete</Link>
-            <Link to={`/editPost/${post.id}`}>Edit</Link>
-          </div>
-        )
-      })}
-    </>
-  )
+  }
 }
