@@ -1,4 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto:wght@300&display=swap');
 
+$heading : 'DM Serif Display', serif;
+$font:  'Roboto', sans-serif;
+
+.navbar-brand{
+  font-family: $heading;
+  font-size: 30px;
+
+}
+.nav-link{
+  font-family: $font;
+  font-weight: bold;
+  color: $primary_dark !important;
+  border-bottom: solid 2px white;
+  &:hover{
+    border-color: $turquoise;
+  }
+}
+.dropdown-item:hover{
+  background-color: #00c9a77e;
+}
 .register_link-container{
   a{
     color: $rust;

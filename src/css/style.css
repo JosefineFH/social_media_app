@@ -1,3 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto:wght@300&display=swap");
+.success {
+  border: solid 1px #1E561F;
+  background-color: #FCFFF5;
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.success p {
+  margin: 0;
+  color: #1E561F;
+  font-weight: bolder;
+}
+
+.error {
+  border: solid 1px #1E561F;
+  background-color: #FCFFF5;
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.error p {
+  margin: 0;
+  color: #1E561F;
+  font-weight: bolder;
+}
+
+.navbar-brand {
+  font-family: "DM Serif Display", serif;
+  font-size: 30px;
+}
+
+.nav-link {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: #032D29 !important;
+  border-bottom: solid 2px white;
+}
+
+.nav-link:hover {
+  border-color: #00C9A7;
+}
+
+.dropdown-item:hover {
+  background-color: #00c9a77e;
+}
+
 .register_link-container a {
   color: #8C310F;
   border-bottom: solid #8C310F 2px;

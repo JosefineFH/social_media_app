@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BASE_URL, REGISTER_PATH } from "../../constants/api";
@@ -8,12 +8,17 @@ import { FaUserAlt } from 'react-icons/fa';
 import { BiLockAlt } from 'react-icons/bi'
 import FormError from "../Common/FormError";
 import { useNavigate } from "react-router-dom";
-
+import AuthContext from "../../context/AuthContext";
 
 export default function RegisterUserForm() {
-  const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
-  let history = useNavigate();
+  const [auth, setAuth] = useContext(AuthContext);
+  const [successMessage, setSuccessMessage] = useState(null)
+  const navigate = useNavigate();
+  console.log(auth)
+  if (auth) {
+    navigate('/dashboard')
+  }
 
   const {
     register,
@@ -24,36 +29,24 @@ export default function RegisterUserForm() {
   const url = BASE_URL + REGISTER_PATH
 
   async function onSubmit(data) {
-    const message = document.querySelector(".message")
-
-    setSubmitting(true);
     setLoginError(null);
-
     try {
-
       await axios.post(url, data);
-      message.innerHTML = `<div className="success"><p>You ar now registered in!</p></div>`;
-
+      setSuccessMessage(`<div className="success"><p>You ar now logging in!</p></div>`)
       setTimeout(() => {
-        history("/");
+        navigate("/");
       }, 1000);
-
     }
-
     catch (error) {
-      console.log("error", error);
-      setLoginError(error.toString());
-    } finally {
-      setSubmitting(false);
+      const errorMessage = <div className="error">{error.response.data.errors[0].message}</div>;
+      setLoginError(errorMessage);
     }
   }
   return (
     <>
       <div>
-        {loginError && <FormError>{loginError}</FormError>}
         <Form className="form_container" onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mb-3" >
-
             <Form.Label></Form.Label>
             <InputGroup className="mb-3">
               <div className="input_group-container">
@@ -66,8 +59,6 @@ export default function RegisterUserForm() {
               </div>
               {errors.name && <span className="error">This field is required. The message must be at least 5 characters</span>}
             </InputGroup>
-
-
             <Form.Label></Form.Label>
             <InputGroup className="mb-3">
               <div className="input_group-container">
@@ -124,16 +115,14 @@ export default function RegisterUserForm() {
                 />
               </div>
             </InputGroup>
-
-
           </Form.Group>
-
+          <div className="message">{successMessage}</div>
+          <div className="message">{loginError}</div>
           <Button className="primary" type="submit">
             Register
           </Button>
         </Form>
       </div>
-      <div className="message"></div>
     </>
   )
 }

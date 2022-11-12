@@ -4,21 +4,16 @@ import { Button, Form, InputGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BASE_URL, TOKEN_PATH } from "../../constants/api";
 import AuthContext from "../../context/AuthContext";
-import GetFromLocalStorage from "../../Hooks/CheckifLogedIn";
 import { MdOutlineAlternateEmail } from "react-icons/md"
 import { BiLockAlt } from 'react-icons/bi';
-import FormError from "../Common/FormError";
 import { useNavigate } from "react-router-dom";
 
-
 export default function LoginForm() {
-  GetFromLocalStorage();
-
-
   const url = BASE_URL + TOKEN_PATH;
-  const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
-  let history = useNavigate();
+  const [successMessage, setSuccessMessage] = useState(null)
+  const navigate = useNavigate();
+  const [auth, setAuth] = useContext(AuthContext);
 
   const {
     register,
@@ -26,33 +21,25 @@ export default function LoginForm() {
     formState: { errors },
   } = useForm();
 
-  const [auth, setAuth] = useContext(AuthContext);
-
   async function onSubmit(data) {
-    const message = document.querySelector(".message")
-
-    setSubmitting(true);
-    setLoginError(null);
-
     try {
       const response = await axios.post(url, data);
       setAuth(response.data);
-      message.innerHTML = `<div className="success"><p>You ar now logging in!</p></div>`;
-      setTimeout(() => {
-        history("/dashboard");
-      }, 1000);
+      if (response.status === 200) {
+        setSuccessMessage(`<div className="success"><p>You ar now logging in!</p></div>`)
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 1000);
+      }
     } catch (error) {
-      console.log("error", error);
-      setLoginError(error.toString());
+      const errorMessage = <div className="error">{error.response.data.errors[0].message}</div>;
+      setLoginError(errorMessage);
 
-    } finally {
-      setSubmitting(false);
     }
   }
   return (
     <>
       <div>
-        {loginError && <FormError>{loginError}</FormError>}
         <Form className="form_container" onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mb-3" >
             <Form.Label></Form.Label>
@@ -91,7 +78,8 @@ export default function LoginForm() {
           </Button>
         </Form>
       </div>
-      <div className="message"></div>
+      <div className="message">{successMessage}</div>
+      <div className="message">{loginError}</div>
       <div className="register_link-container">
         <p>If you don't have a user. You can register <a href="/register">Her!</a></p>
       </div>

@@ -50,9 +50,9 @@ export default function NavigationLayout() {
           </Navbar>
           <Container fluid>
             <Routes>
-              <Route path="/" exact element={<Login />} />
-              <Route path="/dashboard" exact element={<Dashboard />} />
+              <Route path="/" exact element={ auth ? <Dashboard /> : <Login/>} />
               <Route path="/register" exact element={<RegisterUser />} />
+              <Route path="/dashboard" exact element={<Dashboard />} />
               <Route path="/post/:id" element={<PostDetails />} />
               <Route path="/user" element={<UserProfile />} />
               <Route path="/createposts" element={<CreatePost />} />
