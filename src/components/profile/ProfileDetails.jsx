@@ -18,8 +18,8 @@ export default function GetProfileDetails(props) {
   const [isError, setIsError] = useState(null);
   const [posts, setPosts] = useState([])
 
-  const url = BASE_URL + `/profiles/${props.name}?_followers=true&_following=true&_posts=true`;
-
+  const url = BASE_URL + `/profiles/${props.name}?sort=created&sortOrder=desc&_followers=true&_following=true&_posts=true`;
+  console.log(url)
   useEffect(() => {
     async function getUserDetails() {
       const token = items.accessToken;

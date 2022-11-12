@@ -11,7 +11,7 @@ export default function GetPostsList(){
   // const navigate = useNavigate();
   const [auth, setAuth] = useContext(AuthContext);
   const userName = auth.name
-  const url = BASE_URL + `/profiles/${userName}/posts`;
+  const url = BASE_URL + `/profiles/${userName}/posts?ortOrder=desc`;
 
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
