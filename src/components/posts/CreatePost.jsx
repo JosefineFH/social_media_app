@@ -74,8 +74,8 @@ export default function CreatePostForm(){
   
     return (<>
     <div className="message">{successMessage}</div>
-      <Form onSubmit={handleSubmit(CreatePost)}>
-        <InputGroup className="mb-3">
+      <Form className="form_container create_post"  onSubmit={handleSubmit(CreatePost)}>
+        <InputGroup>
             <Form.Label>Title </Form.Label>
             <div className="input_group-container">
               <input name="title"

@@ -11,7 +11,7 @@ import AuthContext from "../../context/AuthContext";
 export default function GetPosts() {
   const [auth, setAuth] = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
-  const [index, setIndex] = useState(6);
+  const [index, setIndex] = useState(9);
   const [isCompleted, setIsCompleted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
@@ -31,11 +31,8 @@ export default function GetPosts() {
         try {
           const response = await axios.get(url, options);
           const posts = response.data;
-          console.log(posts)
           setPosts(posts);
-          // setPhotoURL(posts.media)
         } catch (error) {
-          console.log(error)
           setIsError("There was an error fetching the profile");
         } finally {
           setIsLoading(false);
@@ -46,7 +43,7 @@ export default function GetPosts() {
     getPosts();
   }, []);
   const loadMore = () => {
-    setIndex(index + 6)
+    setIndex(index + 9)
     if (index >= posts.length) {
       setIsCompleted(true)
     } else {

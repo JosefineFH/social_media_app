@@ -15,7 +15,8 @@ import { useContext } from "react";
 import CreatePost from "../../pages/Post/CreatesPost";
 import ViewUserPosts from "../../pages/Profile/ViewUserPosts";
 import EditPost from "../../pages/Post/EditPost";
-import UserProfiles from "../../pages/Profile/Profiles";
+import UserProfiles from "../../pages/Profile/ProfilesList";
+import Logout from "../logout/Logout";
 
 export default function NavigationLayout() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -40,7 +41,7 @@ export default function NavigationLayout() {
                       </NavDropdown.Item>
                       <NavDropdown.Item href="/createposts">Create new post</NavDropdown.Item>
                     </NavDropdown>
-                    <Nav.Link to="/dashboard">logout</Nav.Link> 
+                    <Logout/>
                   </>
                 ) : (
                   <Nav.Link to="/">Login</Nav.Link>
