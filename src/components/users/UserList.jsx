@@ -40,7 +40,7 @@ export default function UserList() {
 
   }, []);
   
-  const loadMore = () => {       
+  function loadMore() {
     let offset = 20;
     console.log(offset)
     async function getUserList() {  
@@ -59,8 +59,8 @@ export default function UserList() {
     }
 
     getUserList();
-    
   }
+
 
   if (isLoading) {
     return <div>Loading</div>;
