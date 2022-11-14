@@ -12,8 +12,9 @@ export default function UserList() {
   const [auth, setAuth] = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [isCompleted, setIsCompleted] = useState(false);
-  const [index, setIndex] = useState(20);
-  const initialUsers = slice(users, 0, index)
+  const [offset, setoffset] = useState(20);
+  // const [index, setIndex] = useState(20);
+  // const initialUsers = slice(users, 0, index)
   const url = BASE_URL + `/profiles?sort=name&sortOrder=asc&_followers=true&_following=true&limit=20`;
   const token = auth.accessToken;
   const options = {
@@ -26,7 +27,6 @@ export default function UserList() {
       try {
         const response = await axios.get(url, options);
         const users = response.data;
-        console.log(users)
         setUsers(users);
       } catch (error) {
         setIsError("There was an error fetching the profile");
@@ -36,15 +36,13 @@ export default function UserList() {
     }
 
     getUserList();
-
   }, []);
   
-  function loadMore() {
-    let offset = 20;
+  const loadMore = () => {
+    setoffset(count => count + 10);
     async function getUserList() {  
-      offset += 10
       try {
-        const response = await axios.get(url + `&offset=${offset}`, options);
+        const response = await axios.get( BASE_URL + `/profiles?sort=name&sortOrder=asc&_followers=true&_following=true&offset=${offset}`, options);
         const newData = response.data;
         setUsers(users.concat(newData));
       } catch (error) {
@@ -56,7 +54,7 @@ export default function UserList() {
 
     getUserList();
   }
-  console.log(users)
+  // console.log(users)
 
   if (isLoading) {
     return <div>Loading</div>;
@@ -71,7 +69,7 @@ export default function UserList() {
       <div>
         <div className="list_post-grid profile_card-list">
           {
-            initialUsers.map((user) => {
+            users.map((user) => {
               let image = missingImage;
 
               if (user.avatar) {
