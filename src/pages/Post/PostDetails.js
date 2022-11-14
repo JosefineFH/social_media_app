@@ -30,10 +30,8 @@ export default function PostDetails() {
 
       try {
         const response = await axios.get(url, options);
-        console.log(response);
         setPage(response.data);
       } catch (error) {
-        console.log(error);
         // setError(error.toString());
       } finally {
         setLoader(false);
@@ -61,15 +59,15 @@ export default function PostDetails() {
   }
   return (
     <>
-    <di>
+    <div>
       <FollowUser/>
-    </di>
+    </div>
       <div>
         <img src={image} />
       </div>
-      <did>
+      <div>
         <ReactToPost/>
-      </did>
+      </div>
       <h1>{page.title}</h1>
 
       <div className="info_container">
@@ -97,7 +95,7 @@ export default function PostDetails() {
         </div>
       </div>
       <div>
-        <Comments/>
+        <Comments id={page.id}/>
       </div>
     </>
   );

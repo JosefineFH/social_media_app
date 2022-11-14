@@ -482,3 +482,30 @@ a.author_name:hover {
 .following_container p {
   font-weight: bold;
 }
+
+.comments {
+  border-top: #032D29 solid 2px;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 5rem;
+}
+
+.comments .comment_container {
+  margin: 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.comments .comment_container .comment_body {
+  padding-left: 20px;
+  width: 100%;
+  text-align: start;
+}
+
+.comments .comment_container .comment_owner {
+  padding: 0 20px;
+  width: 40%;
+  text-align: start;
+  font-weight: bold;
+}

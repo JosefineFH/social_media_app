@@ -1,0 +1,23 @@
+
+.comments{
+  border-top: $primary_dark solid 2px;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 5rem;
+  .comment_container{
+    margin: 20px 0;
+    display: flex;
+    .comment_body{
+      padding-left: 20px;
+      width: 100%;
+      text-align: start;
+    }
+    .comment_owner{
+      padding: 0 20px;
+      width: 40%;
+      text-align: start;
+      font-weight: bold;
+    }
+  }
+    
+}
