@@ -1,12 +1,10 @@
 import axios from "axios";
 import { slice } from "lodash";
 import { useContext, useEffect, useState } from "react";
-// import { useNavigate } from "react-router";
 import { BASE_URL } from "../../constants/api";
 import AuthContext from "../../context/AuthContext";
 import missingImage from "../../assets/image_missing.png";
-import { off } from "process";
-
+import { Link } from "react-router-dom";
 
 export default function UserList() {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,6 +26,7 @@ export default function UserList() {
       try {
         const response = await axios.get(url, options);
         const users = response.data;
+        console.log(users)
         setUsers(users);
       } catch (error) {
         setIsError("There was an error fetching the profile");
@@ -42,15 +41,12 @@ export default function UserList() {
   
   function loadMore() {
     let offset = 20;
-    console.log(offset)
     async function getUserList() {  
       offset += 10
-      console.log(offset)
       try {
         const response = await axios.get(url + `&offset=${offset}`, options);
-        const users = response.data;
-        console.log(users)
-        setUsers(users);
+        const newData = response.data;
+        setUsers(users.concat(newData));
       } catch (error) {
         setIsError("There was an error fetching the profile");
       } finally {
@@ -60,7 +56,7 @@ export default function UserList() {
 
     getUserList();
   }
-
+  console.log(users)
 
   if (isLoading) {
     return <div>Loading</div>;
@@ -83,12 +79,14 @@ export default function UserList() {
               }
               return (
                 <div className="profile_card">
+                  <Link to={`/profile/${user.name}`} name={user.name}>
                   <img src={image} />
                   <h2>{user.name}</h2>
                   <div className="followers_container">
                     <p>Following: <span>{user.following.length}</span></p> |
                     <p>followers: <span>{user.followers.length}</span></p>
                   </div>
+                  </Link>
                 </div>
 
               )
