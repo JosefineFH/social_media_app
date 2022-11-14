@@ -4,6 +4,9 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Loader from "../../components/Common/Loader";
 import { BASE_URL } from "../../constants/api";
 import missingImage from "../../assets/image_missing.png";
+import Comments from "../../components/posts/Comment";
+import ReactToPost from "../../components/posts/ReactToPost"
+import FollowUser from "../../components/profile/FollowUser";
 
 export default function PostDetails() {
   const [page, setPage] = useState(null);
@@ -56,12 +59,17 @@ export default function PostDetails() {
   if (page.media) {
     image = page.media;
   }
-  console.log(image);
   return (
     <>
+    <di>
+      <FollowUser/>
+    </di>
       <div>
         <img src={image} />
       </div>
+      <did>
+        <ReactToPost/>
+      </did>
       <h1>{page.title}</h1>
 
       <div className="info_container">
@@ -87,6 +95,9 @@ export default function PostDetails() {
         <div>
           <p>{page.body}</p>
         </div>
+      </div>
+      <div>
+        <Comments/>
       </div>
     </>
   );
