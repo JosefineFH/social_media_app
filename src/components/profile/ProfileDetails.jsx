@@ -19,7 +19,7 @@ export default function GetProfileDetails(props) {
   const [posts, setPosts] = useState([])
 
   const url = BASE_URL + `/profiles/${props.name}?sort=created&sortOrder=desc&_followers=true&_following=true&_posts=true`;
-  console.log(url)
+
   useEffect(() => {
     async function getUserDetails() {
       const token = items.accessToken;
@@ -29,10 +29,10 @@ export default function GetProfileDetails(props) {
       try {
         const response = await axios.get(url, options);
         const userDetails = response.data
+        console.log(userData)
         setPosts(userDetails.posts)
         setUserData(userDetails)
       } catch (error) {
-        console.log(error)
         setIsError("There was an error fetching your profile");
       } finally {
         setIsLoading(false);
