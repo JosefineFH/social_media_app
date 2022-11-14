@@ -421,10 +421,9 @@ a.author_name:hover {
 }
 
 .profile_card {
-  -webkit-box-shadow: 2px 8px 15px 0px #888888;
-          box-shadow: 2px 8px 15px 0px #888888;
   width: 250px;
   margin: 10px;
+  border: 2px solid white;
 }
 
 .profile_card img {
@@ -445,6 +444,21 @@ a.author_name:hover {
 
 .profile_card .followers_container p {
   padding: 0 10px;
+}
+
+.profile_card a {
+  color: black;
+}
+
+.profile_card a:hover {
+  text-decoration: none;
+}
+
+.profile_card:hover {
+  -webkit-box-shadow: 2px 8px 15px 0px #888888;
+          box-shadow: 2px 8px 15px 0px #888888;
+  border: 2px solid #00C9A7;
+  text-decoration: none;
 }
 
 .profile_image {
