@@ -8,10 +8,11 @@ import missingAvatar from "../../assets/image_missing.png";
 import missingBanner from "../../assets/banner_missing.png"
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
+import FollowUser from "./FollowUser";
+import UnFollowUser from "./UnfollowUser";
 
 export default function GetProfileDetails(props) {
   let navigate = useNavigate();
-  const items = JSON.parse(localStorage.getItem('user authentication'));
   const [auth, setAuth] = useContext(AuthContext);
   const [userData, setUserData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -22,14 +23,13 @@ export default function GetProfileDetails(props) {
 
   useEffect(() => {
     async function getUserDetails() {
-      const token = items.accessToken;
       const options = {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${auth.accessToken}` },
       };
       try {
         const response = await axios.get(url, options);
         const userDetails = response.data
-        console.log(userData)
+
         setPosts(userDetails.posts)
         setUserData(userDetails)
       } catch (error) {
@@ -73,6 +73,8 @@ export default function GetProfileDetails(props) {
             <img src={avatar} />
           </div>
           <div className="username_container">
+            <FollowUser name={props.name}/>
+            <UnFollowUser name={props.name}/>
             <h1>{props.name}</h1>
             <div className="following_container">
               <p>Followers: {userData.followers.length}</p>
@@ -108,6 +110,8 @@ export default function GetProfileDetails(props) {
   } else {
     return (
       <div>
+        {/* <FollowUser /> */}
+
         <h1>{auth.name}</h1>
         <div className="following_container">
           <p>Followers: {userData.followers.length}</p>

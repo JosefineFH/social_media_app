@@ -3,6 +3,7 @@ import EditUser from "../SideBar/SideBare";
 import AuthContext from "../../context/AuthContext";
 import GetProfileDetails from "./ProfileDetails";
 import missingBanner from "../../assets/banner_missing.png"
+import FollowUser from "./FollowUser";
 
 export default function UserProfile() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -21,6 +22,7 @@ export default function UserProfile() {
           <>
             <div className="banner_container" style={{ backgroundImage: `url(${banner})` }}>
             </div>
+            {/* <FollowUser /> */}
             <div className="container profile_container">
               <div className="sidebar_container">
                 <EditUser />
