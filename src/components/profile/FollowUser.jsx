@@ -12,16 +12,19 @@ export default function UnFollowUser(props){
   const updateUrl = BASE_URL + `/profiles/${props.name}/follow`;
 
   async function addFollow(){ 
+    console.log("follow user")
     const options = {
       headers: { Authorization: `Bearer ${auth.accessToken}` },
     };
+    console.log(options)
 
     try {
       const response = await axios.put(updateUrl, {}, options);
+      window.location.reload(false);
 
     } catch (error) {
       console.log(error)
-      setIsError("There was an error adding you as a follower");
+      // setIsError("There was an error adding you as a follower");
     } finally {
       setIsLoading(false);
     }
