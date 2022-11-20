@@ -5,7 +5,7 @@ import Loader from "../../components/Common/Loader";
 import { BASE_URL } from "../../constants/api";
 import missingImage from "../../assets/image_missing.png";
 import Comments from "../../components/posts/Comment";
-import ReactToPost from "../../components/posts/ReactToPost"
+import ReactToPost from "../../components/posts/reaction/ReactToPost"
 import FollowUser from "../../components/profile/FollowUser";
 
 export default function PostDetails() {
