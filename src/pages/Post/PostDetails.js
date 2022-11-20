@@ -66,7 +66,7 @@ export default function PostDetails() {
         <img src={image} />
       </div>
       <div>
-        <ReactToPost/>
+        <ReactToPost id={page.id}/>
       </div>
       <h1>{page.title}</h1>
 
