@@ -5,11 +5,11 @@ import Loader from "../../components/Common/Loader";
 import { BASE_URL } from "../../constants/api";
 import missingImage from "../../assets/image_missing.png";
 import Comments from "../../components/posts/Comment";
-import ReactToPost from "../../components/posts/reaction/ReactToPost"
 import FollowUser from "../../components/profile/FollowUser";
+import GetPostReaction from "../../components/posts/reaction/GetReaction";
 
 export default function PostDetails() {
-  const [page, setPage] = useState(null);
+  const [page, setPage] = useState([]);
   const [loader, setLoader] = useState(true);
   const [error, setError] = useState(null);
 
@@ -18,8 +18,7 @@ export default function PostDetails() {
   if (!id) {
     navigate.push("/");
   }
-  const url =
-    BASE_URL + `/posts/${id}?_author=true&_reactions=true&_comments=true`;
+  const url = BASE_URL + `/posts/${id}?_author=true&_comments=true&_reactions=true`;
   useEffect(function () {
     async function getPost() {
       const items = JSON.parse(localStorage.getItem("user authentication"));
@@ -31,6 +30,7 @@ export default function PostDetails() {
       try {
         const response = await axios.get(url, options);
         setPage(response.data);
+        console.log(page)
       } catch (error) {
         // setError(error.toString());
       } finally {
@@ -59,14 +59,12 @@ export default function PostDetails() {
   }
   return (
     <>
-    <div>
-      <FollowUser/>
-    </div>
+      <div></div>
       <div>
         <img src={image} />
       </div>
       <div>
-        <ReactToPost id={page.id}/>
+        <GetPostReaction id={page.id} />
       </div>
       <h1>{page.title}</h1>
 
@@ -95,7 +93,7 @@ export default function PostDetails() {
         </div>
       </div>
       <div>
-        <Comments id={page.id}/>
+        <Comments id={page.id} />
       </div>
     </>
   );
