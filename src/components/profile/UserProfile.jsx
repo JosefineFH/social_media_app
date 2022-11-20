@@ -22,7 +22,6 @@ export default function UserProfile() {
           <>
             <div className="banner_container" style={{ backgroundImage: `url(${banner})` }}>
             </div>
-            {/* <FollowUser /> */}
             <div className="container profile_container">
               <div className="sidebar_container">
                 <EditUser />
