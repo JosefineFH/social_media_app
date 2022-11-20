@@ -30,7 +30,7 @@ export default function PostDetails() {
       try {
         const response = await axios.get(url, options);
         setPage(response.data);
-        console.log(page)
+        console.log(response.data)
       } catch (error) {
         // setError(error.toString());
       } finally {

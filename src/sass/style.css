@@ -25,23 +25,6 @@
   font-weight: bolder;
 }
 
-.label_container {
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.label_container input {
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
 .navbar-brand {
   font-family: "DM Serif Display", serif;
   font-size: 30px;

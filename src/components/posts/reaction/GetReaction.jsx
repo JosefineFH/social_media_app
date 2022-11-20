@@ -46,8 +46,8 @@ export default function GetPostReaction(props) {
         const checkedPostId = e.target.id;
         let checkedValue = e.target.value;
 
-        if(checked === true){
-            checkedValue ++
+        if (checked === true) {
+            checkedValue++
         }
         const data = {
             symbol: checkedName,
@@ -61,15 +61,15 @@ export default function GetPostReaction(props) {
             const response = await axios.put(reactUrl, data, options);
             if (response.status === 200) {
                 console.log("success")
-            //   setSuccessMessage(`<div className="success"><p>You ar now logging in!</p></div>`)
+                //   setSuccessMessage(`<div className="success"><p>You ar now logging in!</p></div>`)
             }
-          } catch (error) {
+        } catch (error) {
             const errorMessage = <div className="error">{error.response.data.errors[0].message}</div>;
             // setIsError(errorMessage);
             console.log(error)
-      
-          }
-        
+
+        }
+
     }
 
     const reactSymbol = [
@@ -96,8 +96,10 @@ export default function GetPostReaction(props) {
                 })
                 return (
                     <>
-                        <label for="vehicle1">{react}</label>
-                        <input type="checkbox" id={props.id} value={count} name={icons} onChange={isChecked}/>
+                        <label className="label_container" for={icons}>{react}
+                            <input type="checkbox" id={props.id} value={count} name={icons} onChange={isChecked} />
+                            <span className="checkmark"></span>
+                        </label>
                     </>
                 )
             })
