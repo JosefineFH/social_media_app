@@ -18,6 +18,7 @@ export default function GetProfileDetails(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
   const [posts, setPosts] = useState([])
+  const [followers, setFollowers] = useState([])
 
   const url = BASE_URL + `/profiles/${props.name}?sort=created&sortOrder=desc&_followers=true&_following=true&_posts=true`;
 
@@ -29,9 +30,10 @@ export default function GetProfileDetails(props) {
       try {
         const response = await axios.get(url, options);
         const userDetails = response.data
-
         setPosts(userDetails.posts)
         setUserData(userDetails)
+        setFollowers(userDetails.followers)
+
       } catch (error) {
         setIsError("There was an error fetching your profile");
       } finally {
@@ -64,6 +66,22 @@ export default function GetProfileDetails(props) {
     } else {
       banner = userData.banner
     }
+
+    let following = false;
+    followers.map((followers) => {
+      if (followers.name === auth.name) {
+        following = true;
+      }
+    })
+    let followButton
+    let isOpen = false
+
+    if (following === true) {
+      followButton = <UnFollowUser name={props.name} />
+    } else {
+      followButton = <FollowUser name={props.name} />
+    }
+
     return (
       <div>
         <div className="banner_container" style={{ backgroundImage: `url(${banner})` }}>
@@ -73,8 +91,7 @@ export default function GetProfileDetails(props) {
             <img src={avatar} />
           </div>
           <div className="username_container">
-            <FollowUser name={props.name}/>
-            <UnFollowUser name={props.name}/>
+            {followButton}
             <h1>{props.name}</h1>
             <div className="following_container">
               <p>Followers: {userData.followers.length}</p>
