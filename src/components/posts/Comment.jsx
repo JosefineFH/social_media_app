@@ -73,22 +73,22 @@ export default function Comments(props) {
   }
 
   return (
-    <>
-    <div className="comments">
-      {
-        comments.map((comment) => {
-          return (
-            <div className="comment_container">
-              <div className="comment_owner"><p>{comment.owner}</p></div>
-              <div className="comment_body"><p>{comment.body}</p></div>
-            </div>
-          )
-        })
-      }
+    <div>
+      <div className="comments">
+        {
+          comments.map((comment) => {
+            return (
+              <div key={comment.id} className="comment_container">
+                <div className="comment_owner"><p>{comment.owner}</p></div>
+                <div className="comment_body"><p>{comment.body}</p></div>
+              </div>
+            )
+          })
+        }
       </div>
       <Form className="form_container" onSubmit={handleSubmit(PostNewComment)}>
         <Form.Group className="mb-3" >
-          <Form.Label>Comment</Form.Label>
+          <Form.Label>Comment: </Form.Label>
 
           <InputGroup className="mb-3">
             <div className="input_group-container">
@@ -110,6 +110,6 @@ export default function Comments(props) {
       <div>
         {successMessage}
       </div>
-    </>
+    </div>
   )
 }

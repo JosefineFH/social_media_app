@@ -1,17 +1,23 @@
 .form_container{
  margin-top: 40px;
+ max-width: 600px;
+ margin: auto;
 
  .form-label{
   display: block;
   margin: 0;
+  font-family: $font;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 10px;
  }
  .input-group{
   flex-direction: column;
    .input_group-container{
     display: flex;
     border: solid black 2px;
-    max-width: 50%;
-    margin: auto;
+    max-width: 100%;
+    // margin: auto;
   
   }
  }
@@ -32,9 +38,9 @@
 .sidebar_container{
   .input_group-container{
     border: unset;
-    max-width: 50%;  
+    // max-width: 50%;  
     @media(min-width: 574px){
-      max-width: 100%;  
+      // max-width: 100%;  
       margin: 0;
 
       

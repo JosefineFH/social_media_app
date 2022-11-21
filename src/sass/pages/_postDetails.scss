@@ -1,15 +1,39 @@
-.info_container{
+.info_container {
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  div{
+  div {
     padding: 0 20px;
-    p{
+    p {
       display: inline;
-      color: gray;
+      font-weight: 400;
     }
-    span{
+    span {
       text-transform: capitalize;
+      font-weight: 400;
+
+      a {
+        color: $turquoise;
+      }
     }
+  }
+}
+.page_body-container {
+  margin: 2rem auto;
+  max-width: 600px;
+
+  p {
+    font-weight: 400;
+  }
+}
+.image_container {
+  max-width: 500px;
+
+  margin: auto;
+  img {
+    object-fit: cover;
+    max-height: 900px;
+    width: 100%;
   }
 }
