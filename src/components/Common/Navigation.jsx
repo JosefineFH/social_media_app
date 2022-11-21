@@ -33,7 +33,7 @@ export default function NavigationLayout() {
                   <>
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="/userprofiles">Users</Nav.Link>
-                    <Nav.Link >{auth.name}</Nav.Link>
+                    <Nav.Link href="/user">{auth.name}</Nav.Link>
                     <NavDropdown id="basic-nav-dropdown">
                       <NavDropdown.Item href="/user">Profile</NavDropdown.Item>
                       <NavDropdown.Item href="/viewPosts">
