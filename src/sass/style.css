@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400&display=swap");
 .success {
   border: solid 1px #1E561F;
   background-color: #FCFFF5;
@@ -25,14 +25,19 @@
   font-weight: bolder;
 }
 
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 300;
+}
+
 .navbar-brand {
   font-family: "DM Serif Display", serif;
   font-size: 30px;
 }
 
 .nav-link {
-  font-family: "Roboto", sans-serif;
-  font-weight: bold;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
   color: #032D29 !important;
   border-bottom: solid 2px white;
 }
