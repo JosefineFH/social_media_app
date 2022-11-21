@@ -1,8 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto:wght@300&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400&display=swap');
+// font-family: 'Source Sans Pro', sans-serif;
 
 $heading : 'DM Serif Display', serif;
-$font:  'Roboto', sans-serif;
-
+$font:  'Source Sans Pro', sans-serif;
+body{
+  font-family: $font;
+  font-weight: 300;
+}
 .navbar-brand{
   font-family: $heading;
   font-size: 30px;
