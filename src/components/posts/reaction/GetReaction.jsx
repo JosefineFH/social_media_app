@@ -1,21 +1,19 @@
 import axios from "axios";
-import { forEach } from "lodash";
 import { useContext } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router";
 import { BASE_URL } from "../../../constants/api";
 import AuthContext from "../../../context/AuthContext";
 
 export default function GetPostReaction(props) {
     const [reactions, setReactions] = useState([]);
-    const [symbolsList, setSymbolsList] = useState();
     const [loader, setLoader] = useState(true);
-    const [error, setError] = useState(null);
+    const [isError, setIsError] = useState(null);
     const [auth, setAuth] = useContext(AuthContext)
+    const [count, setCount] = useState(null)
 
     const id = props.id;
-
+    let countView;
     const options = {
         headers: {
             Authorization: `Bearer ${auth.accessToken}`
@@ -29,8 +27,6 @@ export default function GetPostReaction(props) {
                 const response = await axios.get(url, options)
                 const reactionList = response.data.reactions
                 setReactions(reactionList)
-                console.log(reactionList)
-
             } catch (error) {
 
             } finally {
@@ -48,24 +44,22 @@ export default function GetPostReaction(props) {
 
         if (checked === true) {
             checkedValue++
+            countView = checkedValue
         }
         const data = {
             symbol: checkedName,
             postId: checkedPostId,
             count: `${checkedValue}`
         };
-        console.log(data)
         const reactUrl = BASE_URL + `/posts/${checkedPostId}/react/${checkedName}`
-        console.log(reactUrl)
         try {
             const response = await axios.put(reactUrl, data, options);
+            
             if (response.status === 200) {
-                console.log("success")
-                //   setSuccessMessage(`<div className="success"><p>You ar now logging in!</p></div>`)
             }
         } catch (error) {
             const errorMessage = <div className="error">{error.response.data.errors[0].message}</div>;
-            // setIsError(errorMessage);
+            setIsError(errorMessage);
             console.log(error)
 
         }
@@ -91,16 +85,16 @@ export default function GetPostReaction(props) {
                         icons = symbols;
                         postId = symbol.postId
                         count = symbol.count
+                        countView = count
                     }
-
                 })
                 return (
-                    <>
-                        <label className="label_container" for={icons}>{react}
+                    <div key={icons} className="checkbox_container">
+                        <label className="label_container" htmlFor={icons}>{react}
                             <input type="checkbox" id={props.id} value={count} name={icons} onChange={isChecked} />
                             <span className="checkmark"></span>
                         </label>
-                    </>
+                    </div>
                 )
             })
             }
