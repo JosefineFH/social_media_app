@@ -12,6 +12,7 @@ export default function PostDetails() {
   const [page, setPage] = useState([]);
   const [loader, setLoader] = useState(true);
   const [error, setError] = useState(null);
+  
   const { id } = useParams();
 
   let navigate = useNavigate();

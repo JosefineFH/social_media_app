@@ -85,13 +85,14 @@ export default function GetProfileDetails(props) {
     return (
       <div>
         <div className="banner_container" style={{ backgroundImage: `url(${banner})` }}>
+        {followButton}
         </div>
         <div className="user_info-container">
           <div className="avatar_container">
             <img src={avatar} />
           </div>
           <div className="username_container">
-            {followButton}
+            {/* {followButton} */}
             <h1>{props.name}</h1>
             <div className="following_container">
               <p>Followers: {userData.followers.length}</p>
@@ -127,8 +128,6 @@ export default function GetProfileDetails(props) {
   } else {
     return (
       <div>
-        {/* <FollowUser /> */}
-
         <h1>{auth.name}</h1>
         <div className="following_container">
           <p>Followers: {userData.followers.length}</p>
