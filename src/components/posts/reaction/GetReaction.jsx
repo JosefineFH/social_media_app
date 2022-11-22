@@ -11,6 +11,7 @@ export default function GetPostReaction(props) {
     const [isError, setIsError] = useState(null);
     const [auth, setAuth] = useContext(AuthContext)
     const [count, setCount] = useState(null)
+    const [submitting, setSubmitting] = useState(false);
 
     const id = props.id;
     let countView;
@@ -56,6 +57,7 @@ export default function GetPostReaction(props) {
             const response = await axios.put(reactUrl, data, options);
             
             if (response.status === 200) {
+                setSubmitting(true);
             }
         } catch (error) {
             const errorMessage = <div className="error">{error.response.data.errors[0].message}</div>;
@@ -91,7 +93,7 @@ export default function GetPostReaction(props) {
                 return (
                     <div key={icons} className="checkbox_container">
                         <label className="label_container" htmlFor={icons}>{react}
-                            <input type="checkbox" id={props.id} value={count} name={icons} onChange={isChecked} />
+                            <input type="checkbox" id={props.id} value={count} name={icons} onChange={isChecked}  disabled={submitting}/>
                             <span className="checkmark"></span>
                         </label>
                     </div>
