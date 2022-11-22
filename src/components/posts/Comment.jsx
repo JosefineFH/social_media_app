@@ -4,7 +4,7 @@ import { Button, Form, InputGroup } from "react-bootstrap"
 import { useForm } from "react-hook-form";
 import { BASE_URL } from "../../constants/api";
 import AuthContext from "../../context/AuthContext";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -79,7 +79,14 @@ export default function Comments(props) {
           comments.map((comment) => {
             return (
               <div key={comment.id} className="comment_container">
-                <div className="comment_owner"><p>{comment.owner}</p></div>
+                <div className="comment_owner">
+                  <Link
+                    to={`/profile/${[comment.owner]}`}
+                    key={comment.owner}
+                    className="button"
+                  >
+                    {comment.owner}
+                  </Link></div>
                 <div className="comment_body"><p>{comment.body}</p></div>
               </div>
             )
