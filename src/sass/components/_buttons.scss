@@ -1,4 +1,4 @@
-.follow_button {
+.follow_button, .button {
   border: 2px solid $primary_dark;
   background-color: $primary_dark;
   color: $white;
@@ -11,5 +11,20 @@
     border: 2px solid $orange;
     background-color: $white;
     color: $primary_dark;
+    text-decoration: none;
+
   }
+}
+.button{
+  padding: 10px 20px;
+  font-size: unset;
+  color: $white;
+  font-weight: 400;
+  margin-bottom: 10px;
+  // a:hover{
+  //   border: 2px solid $orange;
+  //   background-color: $white;
+  //   color: $primary_dark;
+  //   text-decoration: none;
+  // }
 }

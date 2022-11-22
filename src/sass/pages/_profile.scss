@@ -6,7 +6,9 @@
   background-position: center;
   justify-content: flex-end;
   display: flex;
-  button{
+  box-shadow: 0px 3px 6px #00000029;
+
+  button {
     margin: 20px;
   }
 }
@@ -20,6 +22,8 @@
       width: 80px;
       height: 80px;
       object-fit: cover;
+      box-shadow: 0px 3px 6px #00000029;
+
       @media (min-width: $sm) {
         width: 100px;
         height: 100px;
@@ -43,9 +47,8 @@
   .post_details {
     display: flex;
     flex-direction: column;
-    border-bottom: 2px solid $primary_dark;
     margin: 20px 0;
-    padding: 20px 0;
+    padding: 20px;
     @media (min-width: $sm) {
       flex-direction: row;
       align-items: center;
@@ -54,8 +57,11 @@
       min-width: 100px;
       max-width: 200px;
     }
-    .text_container{
+    .text_container {
       width: 100%;
     }
+  }
+  .post_details{
+    box-shadow: 0px 3px 6px #00000029;
   }
 }

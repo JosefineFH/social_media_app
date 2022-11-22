@@ -7,6 +7,7 @@ import missingImage from "../../assets/image_missing.png";
 import { slice } from "lodash";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
+import Moment from "moment";
 
 export default function GetPosts() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -63,14 +64,13 @@ export default function GetPosts() {
   if (isError) {
     return <div>{isError}</div>;
   }
-
-
   return (
     <>
       <div className="list_post-grid">
         {initialPosts.map((post) => {
+          const created = post.created
+          const formatDate = Moment(created).format('DD / MM / YYYY')
           let image = missingImage;
-
           if (post.media) {
             image = post.media;
           }
@@ -78,7 +78,7 @@ export default function GetPosts() {
           return (
             <Col>
               <Card>
-                <div className="image_container">
+                <div>
                   <Link to={`/profile/${post.author.name}`} name={post.author.name} avatar={post.author.avatar} className="author_name">{post.author.name}</Link>
                   <Card.Img variant="top" src={image} />
                 </div>
@@ -92,7 +92,7 @@ export default function GetPosts() {
                   <Link to={`/post/${[post.id]}`} key={post.id} value={post.id} className="button">Read More</Link>
                 </Card.Body>
                 <Card.Footer>
-                  <small className="text-muted">{post.created}</small>
+                  <small className="text-muted">{formatDate}</small>
                 </Card.Footer>
               </Card>
             </Col>
