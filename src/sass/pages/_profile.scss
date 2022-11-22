@@ -4,6 +4,11 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  justify-content: flex-end;
+  display: flex;
+  button{
+    margin: 20px;
+  }
 }
 .user_info-container {
   display: flex;
