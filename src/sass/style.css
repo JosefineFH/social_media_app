@@ -29,6 +29,13 @@ body {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 300;
 }
+body h1 {
+  font-family: "DM Serif Display", serif;
+}
+body span, body p, body a {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+}
 
 .navbar-brand {
   font-family: "DM Serif Display", serif;
@@ -153,6 +160,14 @@ body {
   justify-content: center;
 }
 
+.reaction_container {
+  display: flex;
+  justify-content: center;
+}
+.reaction_container div {
+  margin: 10px 20px;
+}
+
 .btn-primary {
   background-color: #032D29;
   border-color: #032D29;
@@ -186,6 +201,7 @@ body {
 }
 
 .info_container {
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -195,10 +211,33 @@ body {
 }
 .info_container div p {
   display: inline;
-  color: gray;
+  font-weight: 400;
 }
 .info_container div span {
   text-transform: capitalize;
+  font-weight: 400;
+}
+.info_container div span a {
+  color: #00C9A7;
+}
+
+.page_body-container {
+  margin: 2rem auto;
+  max-width: 600px;
+}
+.page_body-container p {
+  font-weight: 400;
+}
+
+.image_container {
+  max-width: 500px;
+  margin: auto;
+}
+.image_container img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  max-height: 900px;
+  width: 100%;
 }
 
 .card-group {
@@ -207,7 +246,8 @@ body {
   flex-wrap: wrap;
 }
 .card-group .card {
-  width: 250px;
+  width: 100%;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1607843137);
 }
 
 .banner_container {
@@ -216,6 +256,12 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  justify-content: flex-end;
+  display: flex;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1607843137);
+}
+.banner_container button {
+  margin: 20px;
 }
 
 .user_info-container {
@@ -229,6 +275,7 @@ body {
   height: 80px;
   -o-object-fit: cover;
      object-fit: cover;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1607843137);
 }
 @media (min-width: 576px) {
   .user_info-container .avatar_container img {
@@ -256,9 +303,8 @@ body {
 .posts_container .post_details {
   display: flex;
   flex-direction: column;
-  border-bottom: 2px solid #032D29;
   margin: 20px 0;
-  padding: 20px 0;
+  padding: 20px;
 }
 @media (min-width: 576px) {
   .posts_container .post_details {
@@ -273,6 +319,12 @@ body {
 .posts_container .post_details .text_container {
   width: 100%;
 }
+.posts_container .post_details .text_container h2 {
+  margin-bottom: 30px;
+}
+.posts_container .post_details {
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1607843137);
+}
 
 .form_container {
   margin-top: 40px;
@@ -281,6 +333,8 @@ body {
   display: block;
   margin: 0;
   font-weight: 400;
+  max-width: 600px;
+  margin: auto;
 }
 .form_container .input-group {
   flex-direction: column;
@@ -310,18 +364,20 @@ body {
 
 .dashboard_layout .sidebar_container .input_group-container {
   border: unset;
-  max-width: 50%;
 }
 @media (min-width: 574px) {
   .dashboard_layout .sidebar_container .input_group-container {
-    max-width: 100%;
     margin: 0;
   }
 }
 
 .card {
-  margin: 10px auto;
+  margin: 20px auto;
   width: 300px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1607843137);
+}
+.card:hover {
+  box-shadow: 0px 3px 6px #fff;
 }
 .card img {
   width: 100%;
@@ -330,7 +386,7 @@ body {
      object-fit: cover;
 }
 .card .card-body {
-  padding: 10px 20px;
+  padding: 20px 20px;
 }
 
 a.author_name {
@@ -350,6 +406,7 @@ a.author_name:hover {
 
 .card-title {
   text-transform: capitalize;
+  margin-bottom: 30px;
 }
 
 .profile_card {
@@ -403,11 +460,12 @@ a.author_name:hover {
   border-top: #032D29 solid 2px;
   max-width: 600px;
   margin: auto;
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 .comments .comment_container {
-  margin: 20px 0;
+  padding-top: 20px;
   display: flex;
+  border-bottom: 1px solid #ddd;
 }
 .comments .comment_container .comment_body {
   padding-left: 20px;
@@ -419,4 +477,57 @@ a.author_name:hover {
   width: 40%;
   text-align: start;
   font-weight: bold;
+}
+.comments .comment_container .comment_owner a {
+  color: #00C9A7;
+  text-transform: capitalize;
+}
+.comments .comment_container:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.follow_button, .button {
+  border: 2px solid #032D29;
+  background-color: #032D29;
+  color: #fff;
+  border-radius: 50px;
+  opacity: 1;
+  width: 140px;
+  height: 50px;
+  font-size: 20px;
+}
+.follow_button:hover, .button:hover {
+  border: 2px solid #D98032;
+  background-color: #fff;
+  color: #032D29;
+  text-decoration: none;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: unset;
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.Followers_container {
+  display: flex;
+  justify-content: space-around;
+}
+.Followers_container div {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  height: 200px;
+}
+.Followers_container div img {
+  width: 60%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.Followers_container div a {
+  padding: 30px;
+  width: 30%;
 }/*# sourceMappingURL=style.css.map */
