@@ -17,6 +17,7 @@ import ViewUserPosts from "../../pages/Profile/ViewUserPosts";
 import EditPost from "../../pages/Post/EditPost";
 import UserProfiles from "../../pages/Profile/ProfilesList";
 import Logout from "../logout/Logout";
+import Followers from "../../pages/Profile/FollowerList";
 
 export default function NavigationLayout() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -33,7 +34,7 @@ export default function NavigationLayout() {
                   <>
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="/userprofiles">Users</Nav.Link>
-                    <Nav.Link >{auth.name}</Nav.Link>
+                    <Nav.Link href="/user">{auth.name}</Nav.Link>
                     <NavDropdown id="basic-nav-dropdown">
                       <NavDropdown.Item href="/user">Profile</NavDropdown.Item>
                       <NavDropdown.Item href="/viewPosts">
@@ -61,7 +62,7 @@ export default function NavigationLayout() {
               <Route path="/viewPosts" element={<ViewUserPosts />} />
               <Route path="/editPost/:id" element={<EditPost />} />
               <Route path="/userprofiles" element={<UserProfiles />} />
-
+              <Route path="/followers/:name" element={<Followers />} />
             </Routes>
           </Container>
         </Router>

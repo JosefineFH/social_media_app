@@ -5,7 +5,6 @@ import GetProfileDetails from "../../components/profile/ProfileDetails";
 
 export default function Profile(props) {
   const { name } = useParams();
-  let history = useNavigate();
 
   return (
     <div className="container">

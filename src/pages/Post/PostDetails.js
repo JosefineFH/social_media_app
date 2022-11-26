@@ -1,26 +1,28 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Loader from "../../components/Common/Loader";
 import { BASE_URL } from "../../constants/api";
 import missingImage from "../../assets/image_missing.png";
 import Comments from "../../components/posts/Comment";
-import FollowUser from "../../components/profile/FollowUser";
 import GetPostReaction from "../../components/posts/reaction/GetReaction";
+import Moment from "moment";
 
 export default function PostDetails() {
   const [page, setPage] = useState([]);
   const [loader, setLoader] = useState(true);
   const [error, setError] = useState(null);
+  
+  const { id } = useParams();
 
   let navigate = useNavigate();
-  const { id } = useParams();
   if (!id) {
     navigate.push("/");
   }
-  const url = BASE_URL + `/posts/${id}?_author=true&_comments=true&_reactions=true`;
   useEffect(function () {
     async function getPost() {
+      const url =
+        BASE_URL + `/posts/${id}?_author=true&_comments=true&_reactions=true`;
       const items = JSON.parse(localStorage.getItem("user authentication"));
       const token = items.accessToken;
       const options = {
@@ -30,9 +32,8 @@ export default function PostDetails() {
       try {
         const response = await axios.get(url, options);
         setPage(response.data);
-        console.log(response.data)
       } catch (error) {
-        // setError(error.toString());
+        setError(error.toString());
       } finally {
         setLoader(false);
       }
@@ -49,38 +50,40 @@ export default function PostDetails() {
     );
   }
 
-  // if (error) {
-  //   return <div>Error: An error occurred</div>;
-  // }
-
-  let image = missingImage;
-  if (page.media) {
-    image = page.media;
+  if (error) {
+    return <div>Error: An error occurred</div>;
   }
+
+  let postImage = missingImage;
+  if (page.media) {
+    postImage = page.media;
+  }
+  const created = page.created
+  const formatDate = Moment(created).format('DD-MM-YYYY')
+
   return (
     <>
-      <div></div>
-      <div>
-        <img src={image} />
+      <div className="image_container">
+        <img src={postImage} alt={page.title} />
       </div>
-      <div>
-        <GetPostReaction id={page.id} />
+      <div className="reaction_container">
+        <GetPostReaction id={page.id} key={page.id} />
       </div>
       <h1>{page.title}</h1>
 
       <div className="info_container">
         <div>
-          <p>Created:</p>
-          <span>{page.created}</span>
+          <p>Created: </p>
+          
+          <span>{formatDate}</span>
         </div>
         <div>
-          <p>Author:</p>{" "}
+          <p>Author: </p>
           <span>
             <Link
               to={`/profile/${[page.author.name]}`}
               key={page.author.name}
               value={page.author.name}
-              className="button"
             >
               {page.author.name}
             </Link>
@@ -88,12 +91,12 @@ export default function PostDetails() {
         </div>
       </div>
       <div>
-        <div>
+        <div className="page_body-container">
           <p>{page.body}</p>
         </div>
       </div>
       <div>
-        <Comments id={page.id} />
+        <Comments id={page.id} key={page.id} />
       </div>
     </>
   );

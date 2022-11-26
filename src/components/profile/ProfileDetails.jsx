@@ -81,20 +81,24 @@ export default function GetProfileDetails(props) {
     } else {
       followButton = <FollowUser name={props.name} />
     }
-
+{/* <Link to={`/profile/${post.author.name}`} name={post.author.name} avatar={post.author.avatar} className="author_name">{post.author.name}</Link> */}
+console.log(userData.name)
     return (
       <div>
         <div className="banner_container" style={{ backgroundImage: `url(${banner})` }}>
+        {followButton}
         </div>
         <div className="user_info-container">
           <div className="avatar_container">
             <img src={avatar} />
           </div>
           <div className="username_container">
-            {followButton}
+            {/* {followButton} */}
             <h1>{props.name}</h1>
             <div className="following_container">
+              <Link to={`/followers/${userData.name}`} name={userData.name}>
               <p>Followers: {userData.followers.length}</p>
+              </Link>
               |
               <p>Following: {userData.following.length}</p>
             </div>
@@ -127,8 +131,6 @@ export default function GetProfileDetails(props) {
   } else {
     return (
       <div>
-        {/* <FollowUser /> */}
-
         <h1>{auth.name}</h1>
         <div className="following_container">
           <p>Followers: {userData.followers.length}</p>
