@@ -403,6 +403,10 @@ body span, body p, body a {
   width: 100%;
 }
 
+.posts_container .post_details .text_container h2 {
+  margin-bottom: 30px;
+}
+
 .posts_container .post_details {
   -webkit-box-shadow: 0px 3px 6px #00000029;
           box-shadow: 0px 3px 6px #00000029;
@@ -629,4 +633,35 @@ a.author_name:hover {
   color: #fff;
   font-weight: 400;
   margin-bottom: 10px;
+}
+
+.Followers_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.Followers_container div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 300px;
+  height: 200px;
+}
+
+.Followers_container div img {
+  width: 60%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.Followers_container div a {
+  padding: 30px;
+  width: 30%;
 }

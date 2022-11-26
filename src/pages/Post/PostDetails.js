@@ -84,7 +84,6 @@ export default function PostDetails() {
               to={`/profile/${[page.author.name]}`}
               key={page.author.name}
               value={page.author.name}
-              className="button"
             >
               {page.author.name}
             </Link>

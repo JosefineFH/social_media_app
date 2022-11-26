@@ -83,7 +83,6 @@ export default function Comments(props) {
                   <Link
                     to={`/profile/${[comment.owner]}`}
                     key={comment.owner}
-                    className="button"
                   >
                     {comment.owner}
                   </Link></div>

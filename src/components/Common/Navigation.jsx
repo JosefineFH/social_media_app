@@ -17,6 +17,7 @@ import ViewUserPosts from "../../pages/Profile/ViewUserPosts";
 import EditPost from "../../pages/Post/EditPost";
 import UserProfiles from "../../pages/Profile/ProfilesList";
 import Logout from "../logout/Logout";
+import Followers from "../../pages/Profile/FollowerList";
 
 export default function NavigationLayout() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -61,7 +62,7 @@ export default function NavigationLayout() {
               <Route path="/viewPosts" element={<ViewUserPosts />} />
               <Route path="/editPost/:id" element={<EditPost />} />
               <Route path="/userprofiles" element={<UserProfiles />} />
-
+              <Route path="/followers/:name" element={<Followers />} />
             </Routes>
           </Container>
         </Router>
