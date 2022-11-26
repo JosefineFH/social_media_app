@@ -332,9 +332,10 @@ body span, body p, body a {
 .form_container .form-label {
   display: block;
   margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
   font-weight: 400;
-  max-width: 600px;
-  margin: auto;
+  margin: 10px;
 }
 .form_container .input-group {
   flex-direction: column;
@@ -350,6 +351,9 @@ body span, body p, body a {
   border: none;
   line-height: 1.5;
   height: calc(1.5em + 0.75rem + 2px);
+}
+.form_container .input-group .input_group-container input[type=url]:focus-visible {
+  outline: none;
 }
 .form_container .input-group-text {
   background-color: #fff;

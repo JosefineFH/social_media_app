@@ -94,8 +94,6 @@ export default function RegisterUserForm() {
             <Form.Label>Avatar</Form.Label>
             <InputGroup className="mb-3">
               <div className="input_group-container">
-
-                <InputGroup.Text></InputGroup.Text>
                 <input name="avatar"
                   {...register("avatar")}
                   type="url"
@@ -106,9 +104,7 @@ export default function RegisterUserForm() {
             <Form.Label>Banner</Form.Label>
             <InputGroup className="mb-3">
               <div className="input_group-container">
-
-                <InputGroup.Text></InputGroup.Text>
-                <input name="banner"
+                <input className="url_input" name="banner"
                   {...register("banner")}
                   type="url"
                 />

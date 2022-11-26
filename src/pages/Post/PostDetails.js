@@ -8,6 +8,7 @@ import Comments from "../../components/posts/Comment";
 import GetPostReaction from "../../components/posts/reaction/GetReaction";
 import Moment from "moment";
 
+
 export default function PostDetails() {
   const [page, setPage] = useState([]);
   const [loader, setLoader] = useState(true);

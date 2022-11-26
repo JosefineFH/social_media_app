@@ -1,57 +1,56 @@
-.form_container {
-  margin-top: 40px;
+.form_container{
+ margin-top: 40px;
 
-  .form-label {
-    display: block;
-    margin: 0;
-    font-weight: 400;
-    max-width: 600px;
+ .form-label{
+  display: block;
+  margin: 0;
+  font-family: $font;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 10px;
+ }
+ .input-group{
+  flex-direction: column;
+   .input_group-container{
+    display: flex;
+    border: solid black 2px;
+    width: 60%;
     margin: auto;
-  }
-
-  .input-group {
-    flex-direction: column;
-
-    .input_group-container {
-      display: flex;
-      border: solid black 2px;
-      width: 60%;
-      margin: auto;
-
-      input[type="url"] {
-        width: 100%;
-        border: none;
-        line-height: 1.5;
-        height: calc(1.5em + .75rem + 2px);
+    input[type="url"]{
+      width: 100%;
+      border: none;
+      line-height: 1.5;
+      height: calc(1.5em + .75rem + 2px);
+      &:focus-visible{
+        outline: none;
       }
     }
   }
+ }
+ .input-group-text{
+  background-color: $white;
+  border:none;
+ }
+ .form-control{
+  border:none;
 
-  .input-group-text {
-    background-color: $white;
-    border: none;
-  }
-
-  .form-control {
-    border: none;
-
-  }
-
-  .btn {
+ }
+  .btn{
     margin: 20px 0;
   }
 }
 
-.dashboard_layout {
-  .sidebar_container {
-    .input_group-container {
-      border: unset;
+.dashboard_layout{
+.sidebar_container{
+  .input_group-container{
+    border: unset;
+    // max-width: 50%;  
+    @media(min-width: 574px){
+      // max-width: 100%;  
+      margin: 0;
 
-      @media(min-width: 574px) {
-        margin: 0;
-
-
-      }
+      
     }
   }
+}
 }
