@@ -44,9 +44,6 @@ export default function GetProfileDetails(props) {
   }, [])
 
   if (isLoading) {
-    if (!auth) {
-      navigate('/')
-    }
     return <div>Loading</div>;
   }
   if (isError) {
@@ -81,8 +78,6 @@ export default function GetProfileDetails(props) {
     } else {
       followButton = <FollowUser name={props.name} />
     }
-{/* <Link to={`/profile/${post.author.name}`} name={post.author.name} avatar={post.author.avatar} className="author_name">{post.author.name}</Link> */}
-console.log(userData.name)
     return (
       <div>
         <div className="banner_container" style={{ backgroundImage: `url(${banner})` }}>
@@ -93,7 +88,6 @@ console.log(userData.name)
             <img src={avatar} />
           </div>
           <div className="username_container">
-            {/* {followButton} */}
             <h1>{props.name}</h1>
             <div className="following_container">
               <Link to={`/followers/${userData.name}`} name={userData.name}>
