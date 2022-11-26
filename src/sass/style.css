@@ -280,6 +280,7 @@ body {
 .form_container .form-label {
   display: block;
   margin: 0;
+  font-weight: 400;
 }
 .form_container .input-group {
   flex-direction: column;
@@ -287,8 +288,14 @@ body {
 .form_container .input-group .input_group-container {
   display: flex;
   border: solid black 2px;
-  max-width: 50%;
+  width: 60%;
   margin: auto;
+}
+.form_container .input-group .input_group-container input[type=url] {
+  width: 100%;
+  border: none;
+  line-height: 1.5;
+  height: calc(1.5em + 0.75rem + 2px);
 }
 .form_container .input-group-text {
   background-color: #fff;

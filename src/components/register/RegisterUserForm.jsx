@@ -83,7 +83,6 @@ export default function RegisterUserForm() {
                 <InputGroup.Text><BiLockAlt /></InputGroup.Text>
                 <Form.Control
                   name="password"
-                  // {...register("password")}
                   {...register("password", { required: true, minLength: 8 })}
                   type="password"
                   placeholder="Password..."
@@ -96,7 +95,7 @@ export default function RegisterUserForm() {
             <InputGroup className="mb-3">
               <div className="input_group-container">
 
-                <InputGroup.Text><BiLockAlt /></InputGroup.Text>
+                <InputGroup.Text></InputGroup.Text>
                 <input name="avatar"
                   {...register("avatar")}
                   type="url"
@@ -104,11 +103,11 @@ export default function RegisterUserForm() {
               </div>
             </InputGroup>
 
-            <Form.Label>banner</Form.Label>
+            <Form.Label>Banner</Form.Label>
             <InputGroup className="mb-3">
               <div className="input_group-container">
 
-                <InputGroup.Text><BiLockAlt /></InputGroup.Text>
+                <InputGroup.Text></InputGroup.Text>
                 <input name="banner"
                   {...register("banner")}
                   type="url"
