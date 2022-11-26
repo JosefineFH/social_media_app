@@ -44,9 +44,11 @@ export default function NavigationLayout() {
                     </NavDropdown>
                     <Logout/>
                   </>
-                ) : (
-                  <Nav.Link to="/">Login</Nav.Link>
-                )}
+                ) 
+                : (
+                  <Nav.Link  href="/">Login</Nav.Link>
+                  )
+                }
               </Nav>
             </Navbar.Collapse>
           </Navbar>

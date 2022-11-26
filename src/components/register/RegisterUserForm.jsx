@@ -15,7 +15,6 @@ export default function RegisterUserForm() {
   const [auth, setAuth] = useContext(AuthContext);
   const [successMessage, setSuccessMessage] = useState(null)
   const navigate = useNavigate();
-  console.log(auth)
   if (auth) {
     navigate('/dashboard')
   }
