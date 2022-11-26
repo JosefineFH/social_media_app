@@ -54,10 +54,6 @@ export default function GetPosts() {
 
 
   if (isLoading) {
-    if (!auth) {
-      navigate('/')
-    }
-
     return <div>Loading</div>;
   }
 
@@ -76,14 +72,14 @@ export default function GetPosts() {
           }
 
           return (
-            <Col>
+            <Col key={post.id}>
               <Card>
                 <div>
                   <Link to={`/profile/${post.author.name}`} name={post.author.name} avatar={post.author.avatar} className="author_name">{post.author.name}</Link>
                   <Card.Img variant="top" src={image} />
                 </div>
                 <Card.Body>
-                  <Card.Title>{post.title}</Card.Title>
+                  <Card.Title >{post.title}</Card.Title>
                   <Card.Text
                     dangerouslySetInnerHTML={{
                       __html: `<p></p>`,
