@@ -36,7 +36,7 @@ export default function GetProfileDetails(props) {
           setPosts(userDetails.posts)
           setUserData(userDetails)
           setFollowers(userDetails.followers)
-  
+
         } catch (error) {
           setIsError("There was an error fetching your profile");
         } finally {
@@ -85,7 +85,7 @@ export default function GetProfileDetails(props) {
     return (
       <div>
         <div className="banner_container" style={{ backgroundImage: `url(${banner})` }}>
-        {followButton}
+          {followButton}
         </div>
         <div className="user_info-container">
           <div className="avatar_container">
@@ -95,10 +95,12 @@ export default function GetProfileDetails(props) {
             <h1>{props.name}</h1>
             <div className="following_container">
               <Link to={`/followers/${userData.name}`} name={userData.name}>
-              <p>Followers: {userData.followers.length}</p>
+                <p>Followers: {userData.followers.length}</p>
               </Link>
               |
-              <p>Following: {userData.following.length}</p>
+              <Link to={`/following/${userData.name}`} name={userData.name}>
+                <p>Following: {userData.following.length}</p>
+              </Link>
             </div>
           </div>
         </div>
@@ -131,9 +133,13 @@ export default function GetProfileDetails(props) {
       <div>
         <h1>{auth.name}</h1>
         <div className="following_container">
-          <p>Followers: {userData.followers.length}</p>
+          <Link to={`/followers/${userData.name}`} name={userData.name}>
+            <p>Followers: {userData.followers.length}</p>
+          </Link>
           |
-          <p>Following: {userData.following.length}</p>
+          <Link to={`/following/${userData.name}`} name={userData.name}>
+            <p>Following: {userData.following.length}</p>
+          </Link>
         </div>
         <div className="posts_container">
           {posts.map((post) => {

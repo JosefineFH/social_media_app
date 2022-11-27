@@ -414,8 +414,6 @@ body span, body p, body a {
 
 .form_container {
   margin-top: 40px;
-  max-width: 600px;
-  margin: auto;
 }
 
 .form_container .form-label {
@@ -439,7 +437,19 @@ body span, body p, body a {
   display: -ms-flexbox;
   display: flex;
   border: solid black 2px;
-  max-width: 100%;
+  width: 60%;
+  margin: auto;
+}
+
+.form_container .input-group .input_group-container input[type="url"] {
+  width: 100%;
+  border: none;
+  line-height: 1.5;
+  height: calc(1.5em + .75rem + 2px);
+}
+
+.form_container .input-group .input_group-container input[type="url"]:focus-visible {
+  outline: none;
 }
 
 .form_container .input-group-text {
@@ -641,9 +651,12 @@ a.author_name:hover {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .Followers_container div {
+  margin: 20px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
