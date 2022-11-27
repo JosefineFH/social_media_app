@@ -10,7 +10,7 @@ import Dashboard from "../../pages/Dashboard/Dashboard";
 import RegisterUser from "../../pages/Register/RegisterUser";
 import PostDetails from "../../pages/Post/PostDetails";
 import Profile from "../../pages/Profile/Profile";
-import UserProfile from "../profile/UserProfile";
+import UserProfile from "../../pages/Profile/User";
 import { useContext } from "react";
 import CreatePost from "../../pages/Post/CreatesPost";
 import ViewUserPosts from "../../pages/Profile/ViewUserPosts";

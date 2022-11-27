@@ -24,20 +24,24 @@ export default function GetProfileDetails(props) {
 
   useEffect(() => {
     async function getUserDetails() {
-      const options = {
-        headers: { Authorization: `Bearer ${auth.accessToken}` },
-      };
-      try {
-        const response = await axios.get(url, options);
-        const userDetails = response.data
-        setPosts(userDetails.posts)
-        setUserData(userDetails)
-        setFollowers(userDetails.followers)
-
-      } catch (error) {
-        setIsError("There was an error fetching your profile");
-      } finally {
-        setIsLoading(false);
+      if (auth === null) {
+        navigate('/')
+      } else {
+        const options = {
+          headers: { Authorization: `Bearer ${auth.accessToken}` },
+        };
+        try {
+          const response = await axios.get(url, options);
+          const userDetails = response.data
+          setPosts(userDetails.posts)
+          setUserData(userDetails)
+          setFollowers(userDetails.followers)
+  
+        } catch (error) {
+          setIsError("There was an error fetching your profile");
+        } finally {
+          setIsLoading(false);
+        }
       }
     }
     getUserDetails();

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Loader from "../../components/Common/Loader";
 import { BASE_URL } from "../../constants/api";
@@ -7,9 +7,11 @@ import missingImage from "../../assets/image_missing.png";
 import Comments from "../../components/posts/Comment";
 import GetPostReaction from "../../components/posts/reaction/GetReaction";
 import Moment from "moment";
-
+import AuthContext from "../../context/AuthContext";
 
 export default function PostDetails() {
+  const [auth, setAuth] = useContext(AuthContext);
+
   const [page, setPage] = useState([]);
   const [loader, setLoader] = useState(true);
   const [error, setError] = useState(null);
@@ -17,26 +19,28 @@ export default function PostDetails() {
   const { id } = useParams();
 
   let navigate = useNavigate();
-  if (!id) {
-    navigate.push("/");
-  }
+
   useEffect(function () {
     async function getPost() {
-      const url =
-        BASE_URL + `/posts/${id}?_author=true&_comments=true&_reactions=true`;
-      const items = JSON.parse(localStorage.getItem("user authentication"));
-      const token = items.accessToken;
-      const options = {
-        headers: { Authorization: `Bearer ${token}` },
-      };
-
-      try {
-        const response = await axios.get(url, options);
-        setPage(response.data);
-      } catch (error) {
-        setError(error.toString());
-      } finally {
-        setLoader(false);
+      if(auth === null){
+        navigate(`/`)
+      }else{
+        const url =
+          BASE_URL + `/posts/${id}?_author=true&_comments=true&_reactions=true`;
+        const items = JSON.parse(localStorage.getItem("user authentication"));
+        const token = items.accessToken;
+        const options = {
+          headers: { Authorization: `Bearer ${token}` },
+        };
+  
+        try {
+          const response = await axios.get(url, options);
+          setPage(response.data);
+        } catch (error) {
+          setError(error.toString());
+        } finally {
+          setLoader(false);
+        }
       }
     }
 
