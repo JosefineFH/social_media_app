@@ -32,7 +32,6 @@ export default function PostDetails() {
         const options = {
           headers: { Authorization: `Bearer ${token}` },
         };
-  
         try {
           const response = await axios.get(url, options);
           setPage(response.data);
@@ -99,6 +98,13 @@ export default function PostDetails() {
         <div className="page_body-container">
           <p>{page.body}</p>
         </div>
+      </div>
+      <div>
+        {page.tags.map((tag) => {
+          return(
+            <p className="tag" key={tag}>{tag},</p>
+          )
+        })}
       </div>
       <div>
         <Comments id={page.id} key={page.id} />

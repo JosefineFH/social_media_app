@@ -1,6 +1,7 @@
 .container-fluid{
   margin-top: 50px;
-  max-width: 1200px;
+  padding: 0;
+  margin: 0;
 }
 .list_post-grid{
   display: flex;
@@ -70,10 +71,6 @@
   }
   .content_container{
     margin-top: 40px;
-  }
-
-  .create_post{
-    border: solid green 2px;
   }
 
   .profile_card-list{

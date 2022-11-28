@@ -151,11 +151,6 @@ body span, body p, body a {
 .content_container {
   margin-top: 40px;
 }
-
-.create_post {
-  border: solid green 2px;
-}
-
 .profile_card-list {
   justify-content: center;
 }

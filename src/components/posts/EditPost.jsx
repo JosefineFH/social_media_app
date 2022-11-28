@@ -95,9 +95,9 @@ export default function FormEditPost(title) {
 
   return (<>
     <div className="message">{successMessage}</div>
-    <Form onSubmit={handleSubmit(CreatePost)}>
-      <InputGroup className="mb-3">
+    <Form className="edit_form" onSubmit={handleSubmit(CreatePost)}>
         <Form.Label>Title </Form.Label>
+      <InputGroup className="mb-3">
         <div className="input_group-container">
           <input name="title"
             {...register("title", { required: true })}
@@ -109,8 +109,8 @@ export default function FormEditPost(title) {
         {errors.title && <span className="error">Please enter a title</span>}
       </InputGroup>
 
-      <InputGroup className="mb-3">
         <Form.Label>Body </Form.Label>
+      <InputGroup className="mb-3">
         <div className="input_group-container">
           <textarea name="body"
             {...register("body")}
@@ -121,8 +121,8 @@ export default function FormEditPost(title) {
         {errors.body && <span className="error">Please enter a something in the body. Max 280 symboled</span>}
       </InputGroup>
 
-      <InputGroup className="mb-3">
         <Form.Label>media (use url)</Form.Label>
+      <InputGroup className="mb-3">
         <div className="input_group-container">
           <input name="media"
             {...register("media")}
@@ -133,8 +133,8 @@ export default function FormEditPost(title) {
         {errors.media && <span className="error">Please enter a image url</span>}
       </InputGroup>
 
-      <InputGroup className="mb-3">
         <Form.Label>Tags </Form.Label>
+      <InputGroup className="mb-3">
         <div className="input_group-container">
           <input name="tags"
             {...register("tags")}

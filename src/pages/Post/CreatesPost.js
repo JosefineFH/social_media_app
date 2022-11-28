@@ -1,11 +1,11 @@
-import { useContext, useEffect } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 import Heading from "../../components/Common/Heading";
 import CreatePostForm from "../../components/posts/CreatePost";
 import AuthContext from "../../context/AuthContext";
+import HeaderImage from "../../assets/Header_Image.png";
 
 export default function CreatePost() {
-  const navigate = useNavigate();
   const [auth, setAuth] = useContext(AuthContext);
 
   if (auth === null) {
@@ -14,7 +14,12 @@ export default function CreatePost() {
 
   return (
     <>
-      <Heading title="Create Post" />
+      <div
+        className="header_image"
+        style={{ backgroundImage: `url(${HeaderImage})` }}
+      >
+        <Heading title="Create Post" />
+      </div>
       <CreatePostForm />
     </>
   );
