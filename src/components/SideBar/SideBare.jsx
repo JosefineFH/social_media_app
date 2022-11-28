@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants/api";
 import AuthContext from "../../context/AuthContext";
-import missingAvatar from "../../assets/image_missing.png";
+import missingAvatar from "../../assets/missing_profile_image.png";
 
 
 export default function EditUser() {

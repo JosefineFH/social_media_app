@@ -736,8 +736,8 @@ a.author_name:hover {
 }
 
 .follow_button:hover, .button:hover {
-  border: 2px solid #D98032;
-  background-color: #fff;
+  border: 2px solid #032D29;
+  background-color: #FCFFF5;
   color: #032D29;
   text-decoration: none;
 }

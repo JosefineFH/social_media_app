@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { BASE_URL } from "../../constants/api";
-import missingImage from "../../assets/image_missing.png";
-import missingAvatar from "../../assets/image_missing.png";
-import missingBanner from "../../assets/banner_missing.png"
+import missingImage from "../../assets/missing_profile_image.png";
+import missingAvatar from "../../assets/missing_profile_image.png";
+import missingBanner from "../../assets/Header_Image.png"
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import FollowUser from "./FollowUser";

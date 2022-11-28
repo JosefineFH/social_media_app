@@ -1,7 +1,7 @@
 import { useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
-import missingBanner from "../../assets/banner_missing.png";
+import missingBanner from "../../assets/Header_Image.png";
 import EditUser from "../../components/SideBar/SideBare";
 import GetProfileDetails from "../../components/profile/ProfileDetails";
 import { Navigate } from "react-router";

@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Loader from "../../components/Common/Loader";
 import { BASE_URL } from "../../constants/api";
-import missingImage from "../../assets/image_missing.png";
+import missingImage from "../../assets/missing_image.png";
 import Comments from "../../components/posts/Comment";
 import GetPostReaction from "../../components/posts/reaction/GetReaction";
 import Moment from "moment";

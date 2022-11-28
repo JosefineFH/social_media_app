@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Card, Col } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants/api";
-import missingImage from "../../assets/image_missing.png";
+import missingImage from "../../assets/missing_image.png";
 import { slice } from "lodash";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";

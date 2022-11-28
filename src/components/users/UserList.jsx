@@ -1,9 +1,8 @@
 import axios from "axios";
-import { slice } from "lodash";
 import { useContext, useEffect, useState } from "react";
 import { BASE_URL } from "../../constants/api";
 import AuthContext from "../../context/AuthContext";
-import missingImage from "../../assets/image_missing.png";
+import missingImage from "../../assets/missing_image.png";
 import { Link } from "react-router-dom";
 
 export default function UserList() {
@@ -13,8 +12,6 @@ export default function UserList() {
   const [users, setUsers] = useState([]);
   const [isCompleted, setIsCompleted] = useState(false);
   const [offset, setoffset] = useState(20);
-  // const [index, setIndex] = useState(20);
-  // const initialUsers = slice(users, 0, index)
   const url = BASE_URL + `/profiles?sort=name&sortOrder=asc&_followers=true&_following=true&limit=20`;
   const token = auth.accessToken;
   const options = {
