@@ -1,5 +1,5 @@
 # Social Media App
-
+Live version - Design
 ## Goal 
 Take the skills learned over the last two years and take on an extensive project where the finished product should reflect your general development capabilities, in addition to visual and technical skills.
 
