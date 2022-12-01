@@ -31,7 +31,7 @@ export default function RegisterUserForm() {
     setLoginError(null);
     try {
       await axios.post(url, data);
-      setSuccessMessage(`<div className="success"><p>You ar now logging in!</p></div>`)
+      setSuccessMessage(`<p className="success">You ar now logging in!</p>`)
       setTimeout(() => {
         navigate("/");
       }, 1000);

@@ -45,7 +45,7 @@ export default function CreatePostForm() {
       if (response.status === 200) {
         setSuccessMessage(<p>Your post has been posted</p>)
         setTimeout(() => {
-          navigate("/dashboard");
+          navigate("/viewPosts");
         }, 2000);
       }
     } catch (error) {
@@ -109,7 +109,7 @@ export default function CreatePostForm() {
       </InputGroup>
 
       <Button className="primary" type="submit">
-        Update
+        Create Post
       </Button>
     </Form>
   </>

@@ -65,7 +65,7 @@ export default function EditUser() {
   }
   
   return (
-    <>
+    <div className="edit_user">
       <p>Edit your profile {auth.name}</p>
       <img className="profile_image" src={avatar} />
       <Form className="form_container" onSubmit={handleSubmit(updateUser)}>
@@ -97,6 +97,6 @@ export default function EditUser() {
         </Button>
       </Form>
       <div className="message"></div>
-    </>
+    </div>
   )
 }

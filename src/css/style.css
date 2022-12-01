@@ -183,7 +183,6 @@ body span, body p, body a {
 
 .profile_container .sidebar_container .input_group-container {
   max-width: unset !important;
-  border: unset !important;
 }
 
 .content_container {
@@ -670,6 +669,11 @@ a.author_name:hover {
   height: 200px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.edit_user .input_group-container {
+  width: 100% !important;
+  border: 1px solid black !important;
 }
 
 .following_container {

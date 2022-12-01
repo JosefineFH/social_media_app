@@ -3,3 +3,10 @@
   height: 200px;
   object-fit: cover;
 }
+
+.edit_user{
+  .input_group-container{
+    width: 100% !important;
+    border: 1px solid black !important;
+  }
+}
