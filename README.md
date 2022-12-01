@@ -51,7 +51,11 @@ All admin functionality is managed by an existing application. This project only
 To registar a new user it has to have a `@stud.noroff.no` or `@noroff.no` email. 
 
 # Start up the project localy
-In the project directory, you can run:
+First clone down the project from github. 
+
+Then open the project and run `npm install` in the terminal. 
+
+Next you can run:
 
 `npm start`
 
@@ -73,6 +77,4 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
