@@ -1,5 +1,5 @@
 # Social Media App
-[Live version](https://pages.github.com/) - [Design](https://pages.github.com/)
+[Live version](https://helpful-panda-469815.netlify.app/) - [Design](https://pages.github.com/)
 ## Goal 
 Take the skills learned over the last two years and take on an extensive project where the finished product should reflect your general development capabilities, in addition to visual and technical skills.
 
@@ -47,10 +47,10 @@ All admin functionality is managed by an existing application. This project only
 
 **JavaScript framework**(react >16), **CSS Framework**(Bootstrap, CSS Modules, **Style Components**, MUI or tailwind), **Static Hosting**(Github pages or netlify), **Deisgn applicaitions**(AdobeXD, figma or sketch) and **planning application**(trello or github projects).
 
-## Registar new user
+# How to registar new user on the app 
 To registar a new user it has to have a `@stud.noroff.no` or `@noroff.no` email. 
 
-## Available Scripts
+# Start up the project localy
 In the project directory, you can run:
 
 `npm start`
